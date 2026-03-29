@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>SQL Notes</title>
+  <meta name="description" content="SQL Notes" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="SQL Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="SQL Notes" />
+  
+  
+  
+
+<meta name="author" content="Ray Erickson" />
+
+
+<meta name="date" content="2026-03-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path=""><a href="#sql-database-design-notes"><i class="fa fa-check"></i><b>1</b> SQL Database Design Notes</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#general-notes"><i class="fa fa-check"></i><b>1.1</b> <strong><em>General Notes</em></strong></a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path=""><a href="#information-schema"><i class="fa fa-check"></i><b>1.1.1</b> INFORMATION SCHEMA</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#sql-notes"><i class="fa fa-check"></i><b>1.2</b> SQL Notes</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path=""><a href="#general-sql"><i class="fa fa-check"></i><b>1.2.1</b> General SQL</a></li>
+<li class="chapter" data-level="1.2.2" data-path=""><a href="#sqlite"><i class="fa fa-check"></i><b>1.2.2</b> SQLite</a></li>
+<li class="chapter" data-level="1.2.3" data-path=""><a href="#mysql-specific"><i class="fa fa-check"></i><b>1.2.3</b> MySQL Specific</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#hernandez-notes"><i class="fa fa-check"></i><b>1.3</b> <strong><em>Hernandez Notes</em></strong></a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path=""><a href="#ch.-1"><i class="fa fa-check"></i><b>1.3.1</b> Ch. 1</a></li>
+<li class="chapter" data-level="1.3.2" data-path=""><a href="#ch.-2"><i class="fa fa-check"></i><b>1.3.2</b> Ch. 2</a></li>
+<li class="chapter" data-level="1.3.3" data-path=""><a href="#ch.-3"><i class="fa fa-check"></i><b>1.3.3</b> Ch. 3</a></li>
+<li class="chapter" data-level="1.3.4" data-path=""><a href="#ch.-4"><i class="fa fa-check"></i><b>1.3.4</b> Ch. 4</a></li>
+<li class="chapter" data-level="1.3.5" data-path=""><a href="#ch.-7"><i class="fa fa-check"></i><b>1.3.5</b> Ch. 7</a></li>
+<li class="chapter" data-level="1.3.6" data-path=""><a href="#ch.-8"><i class="fa fa-check"></i><b>1.3.6</b> Ch. 8</a></li>
+<li class="chapter" data-level="1.3.7" data-path=""><a href="#ch.-9"><i class="fa fa-check"></i><b>1.3.7</b> Ch. 9</a></li>
+<li class="chapter" data-level="1.3.8" data-path=""><a href="#ch.-10"><i class="fa fa-check"></i><b>1.3.8</b> Ch. 10</a></li>
+<li class="chapter" data-level="1.3.9" data-path=""><a href="#ch.-11"><i class="fa fa-check"></i><b>1.3.9</b> Ch. 11</a></li>
+<li class="chapter" data-level="1.3.10" data-path=""><a href="#ch.-12"><i class="fa fa-check"></i><b>1.3.10</b> Ch. 12</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path=""><a href="#forta-notes"><i class="fa fa-check"></i><b>1.4</b> <strong><em>Forta Notes</em></strong></a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path=""><a href="#lesson-1"><i class="fa fa-check"></i><b>1.4.1</b> Lesson 1</a></li>
+<li class="chapter" data-level="1.4.2" data-path=""><a href="#lesson-2-showing-data"><i class="fa fa-check"></i><b>1.4.2</b> Lesson 2 showing data</a></li>
+<li class="chapter" data-level="1.4.3" data-path=""><a href="#lesson-3-order-by-limit"><i class="fa fa-check"></i><b>1.4.3</b> Lesson 3 (<code>ORDER BY</code> &amp; <code>LIMIT</code>)</a></li>
+<li class="chapter" data-level="1.4.4" data-path=""><a href="#lesson-4-where"><i class="fa fa-check"></i><b>1.4.4</b> Lesson 4 (<code>WHERE</code>)</a></li>
+<li class="chapter" data-level="1.4.5" data-path=""><a href="#lesson-5-andorinnot"><i class="fa fa-check"></i><b>1.4.5</b> Lesson 5 (<code>AND</code>/<code>OR</code>/<code>IN</code>/<code>NOT</code>)</a></li>
+<li class="chapter" data-level="1.4.6" data-path=""><a href="#lesson-6-like"><i class="fa fa-check"></i><b>1.4.6</b> Lesson 6 (<code>LIKE</code>)</a></li>
+<li class="chapter" data-level="1.4.7" data-path=""><a href="#lesson-7-concat-trim"><i class="fa fa-check"></i><b>1.4.7</b> Lesson 7 (<code>CONCAT</code>) &amp; (<code>TRIM</code>)</a></li>
+<li class="chapter" data-level="1.4.8" data-path=""><a href="#lesson-8-functions"><i class="fa fa-check"></i><b>1.4.8</b> Lesson 8 functions</a></li>
+<li class="chapter" data-level="1.4.9" data-path=""><a href="#lesson-9-summarizing"><i class="fa fa-check"></i><b>1.4.9</b> Lesson 9 summarizing</a></li>
+<li class="chapter" data-level="1.4.10" data-path=""><a href="#lesson-10-grouping"><i class="fa fa-check"></i><b>1.4.10</b> Lesson 10 grouping</a></li>
+<li class="chapter" data-level="1.4.11" data-path=""><a href="#lesson-11-subqueries"><i class="fa fa-check"></i><b>1.4.11</b> Lesson 11 subqueries</a></li>
+<li class="chapter" data-level="1.4.12" data-path=""><a href="#lesson-12-inner-join"><i class="fa fa-check"></i><b>1.4.12</b> Lesson 12 (<code>INNER JOIN</code>)</a></li>
+<li class="chapter" data-level="1.4.13" data-path=""><a href="#lesson-13-outer-joins"><i class="fa fa-check"></i><b>1.4.13</b> Lesson 13 “Outer Joins”</a></li>
+<li class="chapter" data-level="1.4.14" data-path=""><a href="#lesson-14-union"><i class="fa fa-check"></i><b>1.4.14</b> Lesson 14 (<code>UNION</code>)</a></li>
+<li class="chapter" data-level="1.4.15" data-path=""><a href="#lesson-15-insert"><i class="fa fa-check"></i><b>1.4.15</b> Lesson 15 (<code>INSERT</code>)</a></li>
+<li class="chapter" data-level="1.4.16" data-path=""><a href="#lesson-16-updatedelete"><i class="fa fa-check"></i><b>1.4.16</b> Lesson 16 (<code>UPDATE</code>&amp;<code>DELETE</code>)</a></li>
+<li class="chapter" data-level="1.4.17" data-path=""><a href="#lesson-17-createalterdrop-table"><i class="fa fa-check"></i><b>1.4.17</b> Lesson 17 (<code>CREATE/ALTER/DROP TABLE</code>)</a></li>
+<li class="chapter" data-level="1.4.18" data-path=""><a href="#lesson-18-view"><i class="fa fa-check"></i><b>1.4.18</b> Lesson 18 (<code>VIEW</code>)</a></li>
+<li class="chapter" data-level="1.4.19" data-path=""><a href="#lesson-22-keys-and-constraints"><i class="fa fa-check"></i><b>1.4.19</b> Lesson 22 keys and constraints</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SQL Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">SQL Notes</h1>
+<p class="author"><em>Ray Erickson</em></p>
+<p class="date"><em>2026-03-29</em></p>
+</div>
+<!--![title](pngs/name.png)-->
+<div id="sql-database-design-notes" class="section level1 tabset hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> SQL Database Design Notes<a href="#sql-database-design-notes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="general-notes" class="section level2 tabset hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> <strong><em>General Notes</em></strong><a href="#general-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="information-schema" class="section level3 tabset hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> INFORMATION SCHEMA<a href="#information-schema" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>selected tables out of the information schema db find all at</p>
+<p><a href="https://dev.mysql.com/doc/mysql-infoschema-excerpt/5.7/en/information-schema-general-table-reference.html">MYSQL INFORMATION SCHEMA</a></p>
+<p><img src="images/clipboard-1222250964.png" /></p>
+<div id="columns" class="section level5 hasAnchor" number="1.1.1.0.1">
+<h5><span class="header-section-number">1.1.1.0.1</span> COLUMNS<a href="#columns" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>TABLE_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the table containing the column belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the table containing the column belongs.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table containing the column.</li>
+</ul></li>
+<li><code>COLUMN_NAME</code>
+<ul>
+<li>The name of the column.</li>
+</ul></li>
+<li><code>ORDINAL_POSITION</code>
+<ul>
+<li>The position of the column within the table. <code>ORDINAL_POSITION</code> is necessary because you might want to say <code>ORDER</code> BY <code>ORDINAL_POSITION.</code> Unlike <code>SHOW COLUMNS</code>, <code>SELECT</code> from the <code>COLUMNS</code> table does not have automatic ordering.</li>
+</ul></li>
+<li><code>COLUMN_DEFAULT</code>
+<ul>
+<li>The default value for the column. This is <code>NULL</code> if the column has an explicit default of <code>NULL</code>, or if the column definition includes no <code>DEFAULT</code> clause.</li>
+</ul></li>
+<li><code>IS_NULLABLE</code>
+<ul>
+<li>The column nullability. The value is <code>YES</code> if <code>NULL</code> values can be stored in the column, <code>NO</code> if not.</li>
+</ul></li>
+<li><code>DATA_TYPE</code>
+<ul>
+<li>The column data type.</li>
+<li>The <code>DATA_TYPE</code> value is the type name only with no other information. The <code>COLUMN_TYPE</code> value contains the type name and possibly other information such as the precision or length.</li>
+</ul></li>
+<li><code>CHARACTER_MAXIMUM_LENGTH</code>
+<ul>
+<li>For string columns, the maximum length in characters.</li>
+</ul></li>
+<li><code>CHARACTER_OCTET_LENGTH</code>
+<ul>
+<li>For string columns, the maximum length in bytes.</li>
+</ul></li>
+<li><code>NUMERIC_PRECISION</code>
+<ul>
+<li>For numeric columns, the numeric precision.</li>
+</ul></li>
+<li><code>NUMERIC_SCALE</code>
+<ul>
+<li>For numeric columns, the numeric scale.</li>
+</ul></li>
+<li><code>DATETIME_PRECISION</code>
+<ul>
+<li>For temporal columns, the fractional seconds precision.</li>
+</ul></li>
+<li><code>CHARACTER_SET_NAME</code>
+<ul>
+<li>For character string columns, the character set name.</li>
+</ul></li>
+<li><code>COLLATION_NAME</code>
+<ul>
+<li>For character string columns, the collation name.</li>
+</ul></li>
+<li><code>COLUMN_TYPE</code>
+<ul>
+<li>The column data type.</li>
+<li>The <code>DATA_TYPE</code> value is the type name only with no other information. The <code>COLUMN_TYPE</code> value contains the type name and possibly other information such as the precision or length.</li>
+</ul></li>
+<li><code>COLUMN_KEY</code>
+<ul>
+<li>Whether the column is indexed:
+<ul>
+<li>If <code>COLUMN_KEY</code> is empty, the column either is not indexed or is indexed only as a secondary column in a multiple-column, nonunique index.</li>
+<li>If <code>COLUMN_KEY</code> is <code>PRI</code>, the column is a <code>PRIMARY KEY</code> or is one of the columns in a multiple-column <code>PRIMARY KEY</code>.</li>
+<li>If <code>COLUMN_KEY</code> is <code>UNI</code>, the column is the first column of a <code>UNIQUE</code> index. (A <code>UNIQUE</code> index permits multiple <code>NULL</code> values, but you can tell whether the column permits <code>NULL</code> by checking the <code>Null</code> column.)</li>
+<li>If <code>COLUMN_KEY</code> is <code>MUL</code>, the column is the first column of a nonunique index in which multiple occurrences of a given value are permitted within the column.</li>
+<li>If more than one of the <code>COLUMN_KEY</code> values applies to a given column of a table, <code>COLUMN_KEY</code> displays the one with the highest priority, in the order <code>PRI</code>, <code>UNI</code>, <code>MUL.</code></li>
+<li>A <code>UNIQUE</code> index may be displayed as <code>PRI</code> if it cannot contain <code>NULL</code> values and there is no <code>PRIMARY KEY</code> in the table. A <code>UNIQUE</code> index may display as <code>MUL</code> if several columns form a composite <code>UNIQUE</code> index; although the combination of the columns is unique, each column can still hold multiple occurrences of a given value.</li>
+</ul></li>
+</ul></li>
+<li><code>EXTRA</code>
+<ul>
+<li>Any additional information that is available about a given column. The value is nonempty in these cases:</li>
+</ul></li>
+</ul>
+</div>
+<div id="key_column_usage" class="section level5 hasAnchor" number="1.1.1.0.2">
+<h5><span class="header-section-number">1.1.1.0.2</span> KEY_COLUMN_USAGE<a href="#key_column_usage" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The <code>KEY_COLUMN_USAGE</code> table describes which key columns have constraints.</p>
+<ul>
+<li><code>CONSTRAINT_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the constraint belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>CONSTRAINT_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the constraint belongs.</li>
+</ul></li>
+<li><code>CONSTRAINT_NAME</code>
+<ul>
+<li>The name of the constraint.</li>
+</ul></li>
+<li><code>TABLE_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the table containing the column belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the table containing the column belongs.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table containing the column.</li>
+</ul></li>
+<li><code>COLUMN_NAME</code>
+<ul>
+<li>The name of the column that has the constraint.</li>
+<li>If the constraint is a foreign key, then this is the column of the foreign key, not the column that the foreign key references.</li>
+</ul></li>
+<li><code>ORDINAL_POSITION</code>
+<ul>
+<li>The column’s position within the constraint, not the column’s position within the table. Column positions are numbered beginning with 1.</li>
+</ul></li>
+<li><code>POSITION_IN_UNIQUE_CONSTRAINT</code>
+<ul>
+<li>NULL for unique and primary-key constraints. For foreign-key constraints, this column is the ordinal position in key of the table that is being referenced.</li>
+</ul></li>
+<li><code>REFERENCED_TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) referenced by the constraint.</li>
+</ul></li>
+<li><code>REFERENCED_TABLE_NAME</code>
+<ul>
+<li>The name of the table referenced by the constraint.</li>
+</ul></li>
+<li><code>REFERENCED_COLUMN_NAME</code>
+<ul>
+<li>The name of the column referenced by the constraint.</li>
+</ul></li>
+</ul>
+</div>
+<div id="referential_information" class="section level5 hasAnchor" number="1.1.1.0.3">
+<h5><span class="header-section-number">1.1.1.0.3</span> REFERENTIAL_INFORMATION<a href="#referential_information" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The <code>REFERENTIAL_CONSTRAINTS</code> table provides information about foreign keys.</p>
+<ul>
+<li><code>CONSTRAINT_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the constraint belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>CONSTRAINT_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the constraint belongs.</li>
+</ul></li>
+<li><code>CONSTRAINT_NAME</code>
+<ul>
+<li>The name of the constraint.</li>
+</ul></li>
+<li><code>UNIQUE_CONSTRAINT_CATALOG</code>
+<ul>
+<li>The name of the catalog containing the unique constraint that the constraint references. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>UNIQUE_CONSTRAINT_SCHEMA</code>
+<ul>
+<li>The name of the unique constraint that the constraint references.</li>
+</ul></li>
+<li><code>UNIQUE_CONSTRAINT_NAME</code>
+<ul>
+<li>The name of the column that has the constraint.</li>
+</ul></li>
+<li><code>MATCH_OPTION</code>
+<ul>
+<li>The value of the constraint <code>MATCH</code> attribute. The only valid value at this time is <code>NONE.</code><br />
+</li>
+</ul></li>
+<li><code>UPDATE_RULE</code>
+<ul>
+<li>The value of the constraint <code>ON UPDATE</code> attribute. The possible values are <code>CASCADE</code>, <code>SET NULL</code>, <code>SET DEFAULT</code>, <code>RESTRICT</code>, <code>NO ACTION</code>.</li>
+</ul></li>
+<li><code>DELETE_RULE</code>
+<ul>
+<li>The value of the constraint <code>ON DELETE</code> attribute. The possible values are <code>CASCADE</code>, <code>SET NULL</code>, <code>SET DEFAULT</code>, <code>RESTRICT</code>, <code>NO ACTION</code>.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table containing the column.</li>
+</ul></li>
+<li><code>REFERENCED_TABLE_NAME</code>
+<ul>
+<li>The name of the table referenced by the constraint.</li>
+</ul></li>
+</ul>
+</div>
+<div id="tables" class="section level5 hasAnchor" number="1.1.1.0.4">
+<h5><span class="header-section-number">1.1.1.0.4</span> TABLES<a href="#tables" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li><code>TABLE_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the table containing the column belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the table belongs.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table.</li>
+</ul></li>
+<li><code>TABLE_TYPE</code>
+<ul>
+<li><code>BASE TABLE</code> for a table, <code>VIEW</code> for a view, or <code>SYSTEM VIEW</code> for an <code>INFORMATION_SCHEMA</code> table.</li>
+<li>The <code>TABLES</code> table does not list <code>TEMPORARY</code> tables.</li>
+</ul></li>
+<li><code>ENGINE</code>
+<ul>
+<li>The storage engine for the table.</li>
+<li>For partitioned tables, <code>ENGINE</code> shows the name of the storage engine used by all partitions.</li>
+</ul></li>
+<li><code>VERSION</code>
+<ul>
+<li>The version number of the table’s <em>.frm</em> file.</li>
+</ul></li>
+<li><code>ROW_FORMAT</code>
+<ul>
+<li>The row-storage format (<code>Fixed</code>, <code>Dynamic</code>, <code>Compressed</code>, <code>Redundant</code>, <code>Compact</code>).</li>
+</ul></li>
+<li><code>TABLE_ROWS</code>
+<ul>
+<li>The number of rows.</li>
+<li><code>TABLE_ROWS</code> is <code>NULL</code> for <code>INFORMATION_SCHEMA</code> tables.</li>
+</ul></li>
+<li><code>AVG_ROW_LENGTH</code>
+<ul>
+<li>The average row length.</li>
+</ul></li>
+<li><code>DATA_LENGTHH</code>
+<ul>
+<li>?</li>
+</ul></li>
+<li><code>MAX_DATA_LENGTH</code>
+<ul>
+<li>?</li>
+</ul></li>
+<li><code>INDEX_LENGTH</code>
+<ul>
+<li>?</li>
+</ul></li>
+<li><code>DATA_FREE</code>
+<ul>
+<li>The number of allocated but unused bytes.</li>
+</ul></li>
+<li><code>AUTO_INCREMENT</code>
+<ul>
+<li>The next <code>AUTO_INCREMENT</code> value.</li>
+</ul></li>
+<li><code>CREATE_TIME</code>
+<ul>
+<li>when the table was created.</li>
+</ul></li>
+<li><code>UPDATE_TIME</code>
+<ul>
+<li>When the data file was last updated.</li>
+</ul></li>
+<li><code>CHECK_TIME</code>
+<ul>
+<li>When the table was last checked.</li>
+</ul></li>
+<li><code>TABLE_COLLATION</code>
+<ul>
+<li>The table default collation. The output does not explicitly list the table default character set, but the collation name begins with the character set name.</li>
+</ul></li>
+<li><code>CHECKSUM</code>
+<ul>
+<li>The live <code>checksum</code> value, if any.<br />
+</li>
+</ul></li>
+<li><code>CREATE_OPTIONS</code>
+<ul>
+<li>Extra options used with CREATE TABLE</li>
+</ul></li>
+<li><code>TABLE_COMMENT</code>
+<ul>
+<li>The comment used when creating the table (or information as to why MySQL could not access the table information).</li>
+</ul></li>
+</ul>
+</div>
+<div id="tables_constraints" class="section level5 hasAnchor" number="1.1.1.0.5">
+<h5><span class="header-section-number">1.1.1.0.5</span> TABLES_CONSTRAINTS<a href="#tables_constraints" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The <code>TABLE_CONSTRAINTS</code> table describes which tables have constraints.</p>
+<ul>
+<li><code>CONSTRAINT_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the constraint belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>CONSTRAINT_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the constraint belongs.</li>
+</ul></li>
+<li><code>CONSTRAINT_NAME</code>
+<ul>
+<li>The name of the constraint.</li>
+</ul></li>
+<li><code>MATCH_OPTION</code>
+<ul>
+<li>The value of the constraint <code>MATCH</code> attribute. The only valid value at this time is <code>NONE.</code><br />
+</li>
+</ul></li>
+<li><code>TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the table belongs.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table.</li>
+</ul></li>
+<li><code>CONSTRAINT_TYPE</code>
+<ul>
+<li>The type of constraint. The value can be <code>UNIQUE</code>, <code>PRIMARY KEY</code>, <code>FOREIGN KEY</code>, or <code>CHECK.</code> This is a <code>CHAR</code> (not <code>ENUM</code>) column. The <code>CHECK</code> value is not available until MySQL supports <code>CHECK.</code></li>
+<li>The <code>UNIQUE</code> and <code>PRIMARY KEY</code> information is about the same as what you get from the <code>Key_name</code> column in the output from <code>SHOW INDEX</code> when the <code>Non_unique</code> column is 0.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="sql-notes" class="section level2 tabset hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> SQL Notes<a href="#sql-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="general-sql" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> General SQL<a href="#general-sql" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>(pronounced sequel), (ANSI/ISO language)</p>
+<p>Composed of descriptive words, and non procedural (you describe what you want done, not how</p>
+<p>Categories of statements</p>
+<p><img src="images/clipboard-2293752079.png" width="281" /></p>
+<p>There is both ANSI SQL which is the standard and DMBS Specific ‘dialects’</p>
+<p>constraints are optional and [] are not actually used</p>
+<p><img src="images/clipboard-2888031156.png" /> <img src="images/clipboard-3281324140.png" /> <img src="images/clipboard-3157193248.png" /> <img src="images/clipboard-3831871835.png" /> <img src="images/clipboard-2696889302.png" /></p>
+</div>
+<div id="sqlite" class="section level3 tabset hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> SQLite<a href="#sqlite" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="mysql-specific" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> MySQL Specific<a href="#mysql-specific" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="images/clipboard-1647928688.png" /><img src="images/clipboard-1593053714.png" /><img src="images/clipboard-2407362657.png" /><img src="images/clipboard-2069308249.png" /><img src="images/clipboard-1980209212.png" /><img src="images/clipboard-1308006299.png" /><img src="images/clipboard-2394000718.png" /><img src="images/clipboard-2653933734.png" /><img src="images/clipboard-103468022.png" /><img src="images/clipboard-1086370828.png" /><img src="images/clipboard-2288004060.png" /><img src="images/clipboard-4245148916.png" /><img src="images/clipboard-1736486351.png" /></p>
+</div>
+</div>
+<div id="hernandez-notes" class="section level2 tabset hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> <strong><em>Hernandez Notes</em></strong><a href="#hernandez-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ch.-1" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Ch. 1<a href="#ch.-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="operational-vs.-analytical-relational-databases" class="section level4 hasAnchor" number="1.3.1.1">
+<h4><span class="header-section-number">1.3.1.1</span> operational vs. analytical, &amp; relational databases<a href="#operational-vs.-analytical-relational-databases" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>Operational</strong> primarily used in online transaction processing (OLTP) key feature ability to collect modify data on daily basis stores</p>
+<ul>
+<li>dynamic data and up to the minute info</li>
+<li>transactional every day use, data change frequently</li>
+</ul>
+<p><strong>Analytical</strong> primarily used in online analytical processing (OLAP) key feature tracking trends, data over time, and ability to make predictions</p>
+<ul>
+<li>stores static data (often pull from operational for data source)</li>
+<li>another term is data warehouse, use for analysis not transactions, shows history over time, data does not change frequently, data often from operational database</li>
+</ul>
+<p>a <em>relationship</em> is formed in the <strong>relational model</strong> implicitly through matching values of a shared field</p>
+<p><strong>SQL</strong> to create, maintain and query databases</p>
+<ul>
+<li>You recieve data in a regional database by using <em>Structured Query Language</em> (SQL)</li>
+<li>three components of basic SQL Query are the <code>SELECT ... FROM</code> statement, the <code>WHERE</code> clause, &amp; the <code>ORDER BY</code> clause</li>
+<li><code>SELECT</code> indicates the fields selected, <code>FROM</code> is the table(s) within which the fields belong</li>
+<li>the <code>WHERE</code> clause allows for filtering by criteria</li>
+<li>the <code>ORDER BY</code> clause is for sorting in ascending or descending order</li>
+<li>Queries can be saved</li>
+<li>a simple scripting language that can be used to create, add, modify, and query relational databases</li>
+<li>rough standard but kinda different dialects</li>
+</ul>
+<p>RDMS or “Relational Database Management System”</p>
+<ul>
+<li><p>software application program to create maintain modify and manipulate a relational database</p></li>
+<li><p>A <strong>relational database</strong> stores data in relations, which the user perceives as tables. Each relation is composed of tuples, or records, and attributes, or fields. - The physical order of the records or fields is immaterial, each record in the table is identified by a field that contains a unique value</p>
+<ul>
+<li>Built-in multilevel integrity (basically the issue checker)</li>
+<li>logical and physical data independence from database applications (changes don’t auto break dependent things unlike excel refs)</li>
+<li>guaranteed data consistency and accuracy</li>
+<li>easy data retrieval</li>
+<li>reduces non-strategic repetition of data (same info multiple sheets, multiple locations of info)</li>
+<li>tables are connected to one another through strategic repetition called “keys” (matching info boxes)</li>
+</ul></li>
+</ul>
+</div>
+<div id="primary-keys-11-1m-nm-relationships" class="section level4 hasAnchor" number="1.3.1.2">
+<h4><span class="header-section-number">1.3.1.2</span> Primary Keys &amp; 1:1, 1:M, &amp; N:M Relationships<a href="#primary-keys-11-1m-nm-relationships" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>a <strong>one-to-one</strong> relationship is when a single record in one table is related to zero or one record in the other table and vice-versa</p>
+<p>a <strong>One-to-many</strong> relationship is where one record in one table is related to any number of records in the other table but the second table records only relate to one record in the first</p>
+<blockquote>
+<p>you <em>ALWAYS</em> copy the primary key from the “1” side to the “many” side</p>
+</blockquote>
+<p>without a table diagram (ERD) (<em>entity-relationship diagram</em>) use logic, ie. when a single record in the 1st table can be related to one or more records in the second table but a single record in the second table ONLY relates to one record in the first table</p>
+<p>a <strong>many-to-many</strong> relationship is when a record in one table can be related to any number of records in the other table and vice-versa the relationship is established via a linking table (the two primary keys together form a composite primary key, but separately are foreign keys)</p>
+<p><img src="images/clipboard-209521277.png" width="330" /><img src="images/clipboard-2358119629.png" width="337" /><img src="images/clipboard-1451684595.png" width="322" /></p>
+</div>
+</div>
+<div id="ch.-2" class="section level3 tabset hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Ch. 2<a href="#ch.-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="elements-of-a-database" class="section level4 hasAnchor" number="1.3.2.1">
+<h4><span class="header-section-number">1.3.2.1</span> Elements of a Database<a href="#elements-of-a-database" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>logical database describes the size shape and necessary systems for the database, then the physical database can be built</p>
+<p>The relational database is based on two branches of mathematics known as <strong>set theory</strong> and <strong>first-order predicate logic</strong>.</p>
+<p>the problems that good design avoids: redundant data, duplicate data, invalid data, absence of required data</p>
+<ul>
+<li>The database supports both required and ad hoc information retrieval. (expected and unconventional usage)</li>
+<li>The tables are constructed properly and efficiently. (single subject, unique values, )</li>
+<li>Data integrity is imposed at the field, table, and relationship levels. (helps ensure validity)</li>
+<li>The database supports business rules relevant to the organization.</li>
+<li>The database lends itself to future growth.</li>
+</ul>
+<div id="benefits-of-good-design" class="section level5 hasAnchor" number="1.3.2.1.1">
+<h5><span class="header-section-number">1.3.2.1.1</span> Benefits of good design<a href="#benefits-of-good-design" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<ul>
+<li>The database structure is easy to modify and maintain. (modifications do not have spill effects)</li>
+<li>The data is easy to modify. (few duplicates as well)</li>
+<li>Information is easy to retrieve. (properly established relationships between tables.)</li>
+<li>End-user applications are easy to develop and build.
+<ul>
+<li>data integrity</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="database-design-stepsphases" class="section level4 hasAnchor" number="1.3.2.2">
+<h4><span class="header-section-number">1.3.2.2</span> Database Design Steps/Phases<a href="#database-design-stepsphases" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li><strong>Requirement analysis</strong> - examination of the business being modeled, needs, and requirements</li>
+<li><strong>Data modeling</strong> using a method such as ‘entity-relationship (ER) diagramming, semantic-object modeling, object-role modeling, or UML modeling.’ as means of visually representing different aspects of the database structure such as tables, table relationships, and relationship characteristics
+<ol style="list-style-type: lower-roman">
+<li>each method incorporates a set of diagramming symbols to represent a databases structure and characteristics</li>
+<li>fields are also defined and associated with the appropriate tables during the data-modeling phase.</li>
+<li>each table is assigned a <strong>primary key</strong> various levels of data integrity are identified and implemented a relationships are established via <strong>foreign</strong> <strong>keys</strong></li>
+</ol></li>
+<li><strong>Normalization</strong> is the process of decomposing large tables into smaller ones in order to eliminate redundant and duplicate data and avoid problems with inserting, updating, or deleting data. during the process table structures are tested against normal forms (a specified set of rules to test for a particular set of problems)
+<ol style="list-style-type: decimal">
+<li><em>(The normal forms currently in use are First Normal Form, Second Normal Form, Third Normal Form, Fourth Normal Form, Fifth Normal Form, Sixth Normal Form, Boyce-Codd Normal Form, and Domain/Key Normal Form.)</em></li>
+</ol></li>
+</ol>
+</div>
+</div>
+<div id="ch.-3" class="section level3 tabset hasAnchor" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Ch. 3<a href="#ch.-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="null" class="section level4 hasAnchor" number="1.3.3.1">
+<h4><span class="header-section-number">1.3.3.1</span> null<a href="#null" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>null</code> is a missing value <strong>NOT</strong> a zero or or blank spaces, usually <code>null</code> in representing an unknown</p>
+<blockquote>
+<p><code>null</code> breaks math, so if math is needed from a column need to set nulls off</p>
+</blockquote>
+</div>
+<div id="tables-data-table-validation-table" class="section level4 hasAnchor" number="1.3.3.2">
+<h4><span class="header-section-number">1.3.3.2</span> tables (data table, validation table)<a href="#tables-data-table-validation-table" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>because of the primary key, data in a relational database can exist independently of the way it is physically stored</p>
+<ul>
+<li>a <strong>data table</strong> is used to store data and is more changing</li>
+<li>a <strong>validation table</strong> is more static and is mostly used for reference - field (multipart, multivalued, calculated) - poorly designed fields will contain either <strong>multipart</strong> (2 or more distinct items w/i a field), <strong>multivalued</strong> (multiple instance of same type of value), or <strong>calculated</strong> field (results of either string combination or mathamatical expression)</li>
+</ul>
+</div>
+<div id="record" class="section level4 hasAnchor" number="1.3.3.3">
+<h4><span class="header-section-number">1.3.3.3</span> record<a href="#record" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>unique instance of subject of table, composed of entire set of fields in a table regardless of whether the field contains values</p>
+</div>
+<div id="view" class="section level4 hasAnchor" number="1.3.3.4">
+<h4><span class="header-section-number">1.3.3.4</span> view<a href="#view" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>a view is a ‘virtual’ table composed of fields from one or more tables in the database (known as <strong>base tables</strong>) (not an actual unique table, just a virtual compilation table)</p>
+<p>they can allow multi-table working, the prevention of viewing/editing of specific table fields, and implement data integrity - key (primary, composite, foreign) - #### primary keys a <strong>primary key</strong> is a field or group of fields that uniquely identifies each record w/i a table (if composed of 2 or more it is a composite primary key) - A primary key <em>value</em> identifies a specific record, a primary key <em>field</em> identifies a given table - a primary key from one table incorporated into a different table is a <strong>foreign key</strong></p>
+<p><img src="images/clipboard-3833300780.png" width="386" /></p>
+</div>
+</div>
+<div id="ch.-4" class="section level3 hasAnchor" number="1.3.4">
+<h3><span class="header-section-number">1.3.4</span> Ch. 4<a href="#ch.-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>define objective for database</li>
+<li>analyze existing database</li>
+<li>create data structure (tables usually)</li>
+<li>establish table relationships</li>
+<li>determine and define business rules</li>
+<li>determining and defining views</li>
+<li>review for integrity
+<ol style="list-style-type: decimal">
+<li>proper table design/structure</li>
+<li>field specifications/integrity</li>
+<li>validity of relationships</li>
+<li>business rules</li>
+</ol></li>
+</ol>
+</div>
+<div id="ch.-7" class="section level3 tabset hasAnchor" number="1.3.5">
+<h3><span class="header-section-number">1.3.5</span> Ch. 7<a href="#ch.-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Important to make sure that duplicated subject names do not in fact represent different subjects - ex. an <code>equipment</code> subject means both equipment needed by the workers (screwdrivers, etc.), and equipment needed by the site (computers, etc.)</p>
+<p>also important to make sure different subject titles do not cover same subject despite different names - ex. <code>clients</code> and <code>customers</code> includes the same data just different names</p>
+<p>A <em>table type</em> allows you to classify a table by the role it plays within the database and provides you with a means of identifying tables that function in a similar manner. The table’s role determines its type, and you can associate four table types with a given table:</p>
+<ol style="list-style-type: decimal">
+<li>A <strong>data</strong> table represents a subject that is important to the organization and is the primary foundation of the information that the database provides.</li>
+<li>A <strong>linking</strong> table establishes a link between two tables in a many-to-many relationship.</li>
+<li>A <strong>subset</strong> table contains fields that are related to a particular data table and further describes the data table’s subject in a very specific manner.</li>
+<li>A <strong>validation</strong> table contains relatively static data and is a crucial component of data integrity.</li>
+</ol>
+<p>a <em>table description</em> provides a clear definition of the subject represented by the table and states why the subject is important to the organization (<em>there are guidelines that govern how to create these</em>)</p>
+<p>Make sure to resolve multivalued and multipart fields</p>
+<p><strong>Redundant</strong> data is a value that is repeated in a field as a result of the field’s participation in relating two tables or as a result of some field or table anomaly. In the first instance, the redundant data is appropriate; by definition, a field used to relate one table to another will contain redundant data. Redundant data is entirely unacceptable in the second instance, however, because it poses problems with data consistency and data integrity; therefore, you should always strive to keep redundant data to an absolute minimum.</p>
+<p>A duplicate field is a field that appears in two or more tables for any of these reasons.</p>
+<ul>
+<li>It is used to relate a set of tables together. (the only necessary case)</li>
+<li>It indicates multiple occurrences of a particular type of value.</li>
+<li>There is a perceived need for supplemental information.</li>
+</ul>
+<p>remove reference fields (duplicate fields that serve to provide reference info (not the duplicate fields that link tables to eachother) ex. I have my job titles both in a table of each job schedule and in a general job table, the tables are linked by my name, so job titles are unnecessary in both and should be removed from one)</p>
+<p>a <strong>subset table</strong> represents a subordinate subject of a particular data table - it contains fieuld that are specific to the subset subject but also that relate it up to the data table (but NOT fields that are common to both as those are unnecessary duplicates</p>
+<div id="to-resolve-multivalued-fields" class="section level4 hasAnchor" number="1.3.5.1">
+<h4><span class="header-section-number">1.3.5.1</span> To resolve multivalued fields<a href="#to-resolve-multivalued-fields" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Remove the field from the table and use it as the basis for a new table. If necessary, rename the field in accordance with the field name guidelines.</li>
+<li>Use a field (or set of fields) from the original table to relate the original table to the new table; try to select fields that represent the subject of the table as closely as possible. The field(s) you choose will appear in both tables.</li>
+<li>Assign an appropriate name, type, and description to the new table and add it to the Final Table List.</li>
+</ol>
+</div>
+<div id="to-refine-previously-unidentified-subset-tables" class="section level4 hasAnchor" number="1.3.5.2">
+<h4><span class="header-section-number">1.3.5.2</span> To refine previously unidentified subset tables<a href="#to-refine-previously-unidentified-subset-tables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Remove all the fields that the subset tables have in common and use them as the basis for a new data table.</li>
+<li>Identify what subject the new data table represents, and then give that table an appropriate name.</li>
+<li>Make sure that the subset tables represent subordinate subjects of the data table and modify the subset table names as necessary.</li>
+<li>Compose a suitable description for the data table and then add it to the Final Table List. Indicate the table type as “Data.”</li>
+</ol>
+</div>
+<div id="guidelines-to-creating-table-names" class="section level4 hasAnchor" number="1.3.5.3">
+<h4><span class="header-section-number">1.3.5.3</span> Guidelines to creating table names<a href="#guidelines-to-creating-table-names" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>Create a unique, descriptive name that is meaningful to the entire organization.</li>
+<li>Create a name that accurately, clearly, and unambiguously identifies the subject of the table.</li>
+<li>Use the minimum number of words necessary to convey the subject of the table.</li>
+<li>Do not use words that convey physical characteristics. (ie. file, record, table, etc.)</li>
+<li>Do not use acronyms and abbreviations.</li>
+<li>Do not use proper names or other words that will unduly restrict the data that can be entered into the table. (ie. location or other specification)</li>
+<li>Do not use a name that implicitly or explicitly identifies more than one subject.</li>
+<li>Do use the plural form of the name. (pluralize table names, singularize field names)</li>
+</ul>
+</div>
+<div id="guidelines-to-creating-table-descriptions" class="section level4 hasAnchor" number="1.3.5.4">
+<h4><span class="header-section-number">1.3.5.4</span> Guidelines to creating table descriptions<a href="#guidelines-to-creating-table-descriptions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>Include a statement that accurately defines the table.</li>
+<li>Include a statement that explains why this table is important to the organization.</li>
+<li>Compose a description that is clear and succinct.</li>
+<li>Do not include implementation-specific information in your table description, such as how or where the table is used.</li>
+<li>Do not make the table description for one table dependent upon the table description of another table.</li>
+<li>Do not use examples in a table description.</li>
+</ul>
+</div>
+<div id="guidelines-to-creating-field-names" class="section level4 hasAnchor" number="1.3.5.5">
+<h4><span class="header-section-number">1.3.5.5</span> Guidelines to creating field names<a href="#guidelines-to-creating-field-names" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>Create a unique, descriptive name that is meaningful to the entire organization.</li>
+<li>Create a name that accurately, clearly, and unambiguously identifies the characteristic a field represents. (use prefixes where necessary)</li>
+<li>Use the minimum number of words necessary to convey the meaning of the characteristic the field represents.</li>
+<li>Do not use acronyms and use abbreviations judiciously.</li>
+<li>Do not use words that could confuse the meaning of the field name.</li>
+<li>Do not use names that implicitly or explicitly identify more than one characteristic.</li>
+<li>Use the singular form of the name.</li>
+</ul>
+</div>
+<div id="elements-of-the-ideal-field" class="section level4 hasAnchor" number="1.3.5.6">
+<h4><span class="header-section-number">1.3.5.6</span> Elements of the Ideal Field<a href="#elements-of-the-ideal-field" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>It represents a distinct characteristic of the subject of the table.</li>
+<li>It contains only a single value.</li>
+<li>It cannot be deconstructed into smaller components.</li>
+<li>It does not contain a calculated or concatenated value.</li>
+<li>It is unique within the entire database structure.</li>
+<li>It retains a majority of its properties when it appears in more than one table.</li>
+</ul>
+</div>
+<div id="elements-of-the-ideal-table" class="section level4 hasAnchor" number="1.3.5.7">
+<h4><span class="header-section-number">1.3.5.7</span> Elements of the Ideal Table<a href="#elements-of-the-ideal-table" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>It represents a single subject, which can be an object or event.</li>
+<li>It has a primary key.</li>
+<li>It does not contain multipart or multivalued fields.</li>
+<li>It does not contain calculated fields.</li>
+<li>It does not contain unnecessary duplicate fields. (does not apply to fields used to relate tables together)</li>
+<li>It contains only an absolute minimum amount of redundant data.</li>
+</ul>
+</div>
+</div>
+<div id="ch.-8" class="section level3 tabset hasAnchor" number="1.3.6">
+<h3><span class="header-section-number">1.3.6</span> Ch. 8<a href="#ch.-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Keys</strong> are crucial because they ensure that each record in a table is precisely identified, they help establish and enforce various types of integrity, and they serve to establish table relationships.</p>
+<p>first type of key established is the <strong>candidate</strong> key, a field(s) that uniquely identifies a single instance of the table’s subject, all tables must have at least one</p>
+<p>If needed an <em>Artificial Candidate Key</em> can be created</p>
+<p>A <strong>Primary Key</strong> exclusively identified the table throughout the database structure, and must conform to the same elements as a candidate key (and is typically just selected from the pool of candidate keys, single field if possible and including the table name if possible)</p>
+<p>no two tables should have the same primary key, unless they bear a one-to-one relationship or one is a subset table</p>
+<p>all non-primary candidate keys become alternate keys</p>
+<div id="elements-of-a-candidate-key" class="section level4 hasAnchor" number="1.3.6.1">
+<h4><span class="header-section-number">1.3.6.1</span> Elements of a Candidate Key<a href="#elements-of-a-candidate-key" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>It cannot be a multipart field.</li>
+<li>It must contain unique values.</li>
+<li>It cannot contain Nulls.</li>
+<li>Its value cannot cause a breach of the organization’s security or privacy rules.</li>
+<li>Its value is not optional in whole or in part.</li>
+<li>It comprises a minimum number of fields necessary to define uniqueness.</li>
+<li>Its values must uniquely and exclusively identify each record in the table.</li>
+<li>Its value must exclusively identify the value of each field within a given record.</li>
+<li>Its value can be modified only in rare or extreme cases.</li>
+</ul>
+</div>
+<div id="elelments-of-a-primary-key" class="section level4 hasAnchor" number="1.3.6.2">
+<h4><span class="header-section-number">1.3.6.2</span> Elelments of a Primary Key<a href="#elelments-of-a-primary-key" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>It cannot be a multipart field.</li>
+<li>It must contain unique values.</li>
+<li>It cannot contain Nulls.<br />
+</li>
+<li>Its value cannot cause a breach of the organization’s security or privacy rules.</li>
+<li>Its value is not optional in whole or in part.<br />
+</li>
+<li>It comprises a minimum number of fields necessary to define uniqueness.<br />
+</li>
+<li>Its values must uniquely and exclusively identify each record in the table.<br />
+</li>
+<li>Its value must exclusively identify the value of each field within a given record.</li>
+<li>Its value can be modified only in rare or extreme cases.</li>
+</ul>
+</div>
+</div>
+<div id="ch.-9" class="section level3 tabset hasAnchor" number="1.3.7">
+<h3><span class="header-section-number">1.3.7</span> Ch. 9<a href="#ch.-9" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="field-specifications" class="section level4 hasAnchor" number="1.3.7.1">
+<h4><span class="header-section-number">1.3.7.1</span> Field Specifications<a href="#field-specifications" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>Field Specifications</strong> are crucial because</p>
+<ul>
+<li>Field specifications help establish and enforce field-level integrity.</li>
+<li>Defining field specifications for each field enhances overall data integrity.</li>
+<li>Defining field specifications compels you to acquire a complete understanding of the nature and purpose of the data in the database.</li>
+<li>Field specifications constitute the “data dictionary” of the database.</li>
+</ul>
+<p>a field reaches <strong>Field-level integrity</strong> if</p>
+<blockquote>
+<ul>
+<li>The identity and purpose of a field are clear, and all the tables in which it appears are properly identified.</li>
+<li>Field definitions are consistent throughout the database.</li>
+<li>The values of a field are consistent and valid.</li>
+<li>The types of modifications that can be applied to the values in the field are clearly identified.</li>
+</ul>
+</blockquote>
+</div>
+<div id="anatomy-of-a-field-specification" class="section level4 tabset hasAnchor" number="1.3.7.2">
+<h4><span class="header-section-number">1.3.7.2</span> Anatomy of a Field Specification<a href="#anatomy-of-a-field-specification" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/clipboard-3971880574.png" /></p>
+<div id="general-elements" class="section level5 hasAnchor" number="1.3.7.2.1">
+<h5><span class="header-section-number">1.3.7.2.1</span> General Elements<a href="#general-elements" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Field Name, Parent Table, Specification Type, Source Specification, Shared By, Alias(es), Description</p>
+<p><em>The most fundamental attributes of the field</em></p>
+<p>The <strong>Field Name</strong> is the set of <em>absolutely minimal</em> words that uniquely identifies a particular fields throughtout the database</p>
+<p>A table that incorporates a given field within its structure is known as the fields <strong>parent table</strong> this is the <em>only</em> table w/i which the field will appear <em>unless</em> the field is participating in establishing a relationship.</p>
+<p>the elements set for a given field depend n the type of <strong>specification</strong> defined for the field. it can be defined in three ways</p>
+<ol style="list-style-type: decimal">
+<li><strong>Unique</strong> the default unless a template or foreign key, can receive all but <code>Source Specification</code> element and elements only apply to specified field from the <code>Field Name</code> element</li>
+<li><strong>Generic</strong> template field to help ensure consistent definitions for fields with the same <em>general</em> meaning,(ex. for different state fields, even if they have different subjects they all contain a US State) requires a nonspecific field name and element settings that are as broad and general as possible but can take all elements but <code>Parent Table</code>, <code>Shared By</code>, <code>Alias(es)</code>, and <code>Source Specification</code></li>
+<li><strong>Replica</strong> this is the default for a field based on a generic field or that serves as a foreign key, it draws the majority of its element settings from an existing specification but elements can be altered or added</li>
+</ol>
+<p>the <code>Source Specification</code> element is set only on a <strong>Replica</strong> specification and indicates the name of the specific field specification upon which the current specification is based.</p>
+<p>the <code>Shared By</code> element indicates the names of other tables that share this field, the <strong>only</strong> table names that showuld appear hear are those that have an explicit relationship to the fields parent table</p>
+<p>the <code>Alias(es)</code> element is a name or set of names that you use for the field in <em>very rare</em> circumstances for instance where there <em>must</em> be two instances of the field in the <em>same</em> table</p>
+<p>the <code>description</code> element is a complete interpretation of the field</p>
+</div>
+<div id="physical-elements" class="section level5 hasAnchor" number="1.3.7.2.2">
+<h5><span class="header-section-number">1.3.7.2.2</span> Physical Elements<a href="#physical-elements" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Data Type, Length, Decimal Places, Character Support</p>
+<p>The physical elements category pertains to the structure of a field its elements are expressed in general terms because each RDBMS program implements them in a slightly different manner.</p>
+<p>the <strong>Data Type</strong> elelment indicates the nature of data that the field stores there are 3 main types (more exist and are used but they tend to be more program specific)</p>
+<ol style="list-style-type: decimal">
+<li><strong>Alphanumeric</strong> - any combo including keyboard and special characters</li>
+<li><strong>Numeric</strong> - only whole and real numbers, not including numbers with leading 0s (ex. 0022)</li>
+<li><strong>DateTime</strong> - dates times or combo of both</li>
+</ol>
+<p>the <strong>Length</strong> element specifies the total number of characters that a user can enter for any given field value (some programs do not allow setting of this value)</p>
+<p>the <strong>Decimal places</strong> element denotes the number of digits to the right of the decimal point in a real number.</p>
+<p>the <strong>character support</strong> element indicates the types if characters that a user can enter into a given field value - can include or exclude any of the following types of characters</p>
+<ul>
+<li><em>Letters</em>: All letters of the alphabet including foreign language letters such as é and ñ.</li>
+<li><em>Numbers</em>: 0 through 9.</li>
+<li><em>Keyboard characters</em>: Any standard character other than letters and numbers, such as asterisk, ampersand, bracket, caret, comma, equals sign, exclamation point, parenthesis, percent sign, period, pound sign, question mark, quote, semicolon, slash, or vertical bar.</li>
+<li><em>Special characters</em>: Any character that you can produce only through specific combinations of standard keys and the CTRL, ALT, and/or SHIFT keys, or with the aid of a special software program. Characters in this category include complex mathematical symbols, the copyright symbol, fractions, the symbol for pi, and the trademark symbol.</li>
+</ul>
+</div>
+<div id="logical-elements" class="section level5 hasAnchor" number="1.3.7.2.3">
+<h5><span class="header-section-number">1.3.7.2.3</span> Logical Elements<a href="#logical-elements" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Key Type, Key Structure, Uniqueness, Null Support, Values Entered By, Required Value, Range of Values, Edit Rule</p>
+<p>the <strong>Logical Elements</strong> categor pertains mainly to the values within a field, governing matters such as role w/i table, uniqueness, when in should be entered, can it be edited…</p>
+<p>the <strong>Key type</strong> element designates a fields role w/i a table (non-key, primary key, alternate key, foreign key)</p>
+<p>the <strong>Key structure</strong> element denotes whether a field designates as a primary key is acting as a simple (single-field) or part of a composite (multifield) primary key</p>
+<p>the <strong>Uniqueness</strong> element indicates whether a fields values are <code>unique</code> (typically just for primary key) or <code>non-unique</code></p>
+<p>the <strong>Null support</strong> element specifies whether a field excepts nulls or not</p>
+<p>the <strong>Values entered by</strong> element indicates the source of the fields values (needs to be set up before works)</p>
+<p>the <strong>Required value</strong> element denotes whether a user is required to enter a value for a field (must be <code>yes</code> for the primary key)</p>
+<p>the <strong>Range of values</strong> element specifies every possible valid value for this field, this range can be established under three general categories. (DO NOT use “other” or “miscellaneous” w/i ANY category)</p>
+<ol style="list-style-type: decimal">
+<li><em>General</em> - A complete collection of every possible value for this field.</li>
+<li><em>Integrity-specific</em> - A collection of values based on the field’s role within a table relationship.</li>
+<li><em>Business-specific</em> - A collection of values generated by a particular business requirement.</li>
+</ol>
+<p>the <strong>Edit rule</strong> element designates at what point a user can enter a value into a field and whether they can modify that value has 5 options</p>
+<ol style="list-style-type: decimal">
+<li><em>Enter Now, Edits Allowed</em> - must enter value when creating a new record, value can be edited at any time</li>
+<li><em>Enter Later, Edits Allowed</em> - can enter when creating a new record, must at some point, value can then be edited at any time</li>
+<li><em>Enter Now, Edits Not Allowed</em> - must enter value when creating new record, cannot be edited</li>
+<li><em>Enter Later, Edits Not Allowed</em> - can enter when creating a new record, must at some point, value cannot be edited</li>
+<li><em>Not Determined At This Time</em> - the edit rule will be determined when the database is implemented in an RDBMS program</li>
+</ol>
+</div>
+</div>
+<div id="guidelines-for-composing-a-field-description" class="section level4 hasAnchor" number="1.3.7.3">
+<h4><span class="header-section-number">1.3.7.3</span> Guidelines for Composing a Field Description<a href="#guidelines-for-composing-a-field-description" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>Use a statement that accurately identifies the field and clearly states its purpose.</li>
+<li>Write a clear and succinct statement.</li>
+<li>Refrain from restating or rephrasing the field name.</li>
+<li>Avoid using technical jargon, acronyms, or abbreviations.</li>
+<li>Do not include implementation-specific information.</li>
+<li>Do not make this description dependent upon the description of another field.</li>
+<li>Do not use examples.</li>
+</ul>
+</div>
+</div>
+<div id="ch.-10" class="section level3 tabset hasAnchor" number="1.3.8">
+<h3><span class="header-section-number">1.3.8</span> Ch. 10<a href="#ch.-10" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="relationships" class="section level4 hasAnchor" number="1.3.8.1">
+<h4><span class="header-section-number">1.3.8.1</span> Relationships<a href="#relationships" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><span class="math inline">\(1:1\)</span> = one-to-one</p>
+<blockquote>
+<p>OR parent to child relationship, parent PK = child FK</p>
+</blockquote>
+<p><span class="math inline">\(1:N\)</span> = one-to-many <span class="math inline">\(M:N\)</span> = many-to-many</p>
+<p>there are 2 main types of question to ask to determine the table relationships -</p>
+<p><strong>Associative</strong> - can a single record be associated with one or more records either in a second table or for a self-referencing relationship within the original table.</p>
+<p><strong>Contextual</strong> - contrasts a single instance of the subject of the 1st table with multiple of the 2nd table</p>
+<p>it contains two sub-categories</p>
+<p><em>ownership oriented</em> - uses words such as “own”, “has”, “is part of”, &amp; “contain”</p>
+<p><em>action oriented</em> - uses action verbs such as “make”, “visit”, “teach”, &amp; “attend”</p>
+</div>
+<div id="resolving-a-multivalued-field" class="section level4 hasAnchor" number="1.3.8.2">
+<h4><span class="header-section-number">1.3.8.2</span> Resolving a Multivalued Field<a href="#resolving-a-multivalued-field" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Remove the field from the table and use it as the basis for a new table. If necessary, rename the field in accordance with the field naming guidelines that you learned earlier in this chapter.<br />
+</li>
+<li>Use a field (or set of fields) from the original table to relate the original table to the new table; try to select fields that represent the subject of the table as closely as possible. The field(s) you choose will appear in both tables.<br />
+</li>
+<li>Assign an appropriate name, type, and description to the new table and add it to the final table list.</li>
+</ol>
+</div>
+<div id="many-to-many-relationships-fixing" class="section level4 hasAnchor" number="1.3.8.3">
+<h4><span class="header-section-number">1.3.8.3</span> Many-to-Many relationships (fixing)<a href="#many-to-many-relationships-fixing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>There are two types of bridge/linking table that can be formed to fix a many to many relationship</p>
+<p>there is also a thing called <strong>“Flip and Hug”</strong> that basically for a as yet unknown reason when you have a many-to-many relationship when making a linking table the relationships that the ‘many’ tables have to each other mirror across the bridge.</p>
+<blockquote>
+<p>ex. if it was <span class="math display">\[table1 (1,N) &gt;|-0&lt; (0,N) table2\]</span> then with the link it would be <span class="math display">\[table1 (1,1) ||-0&lt; (0,N) bridge (1,N) &gt;|-|| (1,1) table2\]</span></p>
+</blockquote>
+<div id="composite-linking-table" class="section level5 hasAnchor" number="1.3.8.3.1">
+<h5><span class="header-section-number">1.3.8.3.1</span> Composite linking table<a href="#composite-linking-table" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>A composite linking table has the two PK from the original tables become both the composite PK and the FK for the linking table</p>
+<p><img src="images/clipboard-2817116994.png" /></p>
+</div>
+<div id="synthetic-linking-table" class="section level5 hasAnchor" number="1.3.8.3.2">
+<h5><span class="header-section-number">1.3.8.3.2</span> Synthetic linking table<a href="#synthetic-linking-table" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>a synthetic linking table has the two PK from the original tables only become FK and assigns a synthetic PK to the linking table</p>
+<p><img src="images/clipboard-3841593657.png" /></p>
+</div>
+</div>
+<div id="self-referencing-recursive-relationships" class="section level4 hasAnchor" number="1.3.8.4">
+<h4><span class="header-section-number">1.3.8.4</span> Self-Referencing (Recursive) Relationships<a href="#self-referencing-recursive-relationships" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>self-referencing relationships while not existing between tables (it is between records w/i a table) is generally still regarded as a table relationship - a self-referencing relationship can be 1:1, 1:N, or M:N</p>
+<div id="section" class="section level5 hasAnchor" number="1.3.8.4.1">
+<h5><span class="header-section-number">1.3.8.4.1</span> <span class="math inline">\(1:1\)</span><a href="#section" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>an example of a 1:1 self-referencing relationship would be a mentor:mentee relationship w/i an employees table where each mentor only has one mentee and vice-versa but they are w/i the same table</p>
+</div>
+<div id="n" class="section level5 hasAnchor" number="1.3.8.4.2">
+<h5><span class="header-section-number">1.3.8.4.2</span> <span class="math inline">\(1:N\)</span><a href="#n" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>an example of a 1:N self-referencing relationship would be a ‘referred by’ situation, where one person could only be referred by a single person, but one person could refer multiple people</p>
+</div>
+<div id="mn" class="section level5 hasAnchor" number="1.3.8.4.3">
+<h5><span class="header-section-number">1.3.8.4.3</span> <span class="math inline">\(M:N\)</span><a href="#mn" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>an example of a M:N self-referencing relationship would be parts, each part can be a component of another part with a unique part number and in turn have component parts to it</p>
+</div>
+</div>
+<div id="elements-of-a-foreign-key" class="section level4 hasAnchor" number="1.3.8.5">
+<h4><span class="header-section-number">1.3.8.5</span> Elements of a Foreign Key<a href="#elements-of-a-foreign-key" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p>It has the same name as the primary key from which it was copied.</p></li>
+<li><p>It uses a replica of the field specifications for the primary key from which it was copied.</p>
+<blockquote>
+<p><strong><em>Defined by</em></strong></p>
+<ul>
+<li>Specification Type: “replica” since is replica of PK field specs</li>
+<li>Parent Table:</li>
+<li>Source Specification: indicate parent PK &amp; table name</li>
+<li>Description: purpose within child table as FK</li>
+</ul>
+</blockquote></li>
+<li><p>It has adjusted logical elements</p>
+<blockquote>
+<p><strong><em>Defined by</em></strong></p>
+<ul>
+<li>Key Type: “Foreign”</li>
+<li>Uniqueness: “non-unique” <strong>unless 1:1 relationship</strong> as ‘non-unique’ allows for multiple relationships vs. ‘unique’ only allows for 1.</li>
+<li>Values Entered By: “User”</li>
+<li>Range of Values: must be restricted to only values contained w/i original PK</li>
+<li>Edit Rule: likely “Enter Now, Edits Allowed” although some situations might require “Enter Later…”</li>
+</ul>
+</blockquote></li>
+<li><p>It draws its values from the primary key to which it refers.</p></li>
+</ul>
+</div>
+<div id="deletion-rules" class="section level4 hasAnchor" number="1.3.8.6">
+<h4><span class="header-section-number">1.3.8.6</span> Deletion Rules<a href="#deletion-rules" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>it is very important to establish a deletion rule as for what the RDBMS should do when requested to delete a record in the parent table to prevent orphaned records. There are 5 main types.</p>
+<div id="deny" class="section level5 hasAnchor" number="1.3.8.6.1">
+<h5><span class="header-section-number">1.3.8.6.1</span> DENY<a href="#deny" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>wont delete but instead classify record as “inactive”</p>
+</div>
+<div id="restrict" class="section level5 hasAnchor" number="1.3.8.6.2">
+<h5><span class="header-section-number">1.3.8.6.2</span> RESTRICT<a href="#restrict" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>wont delete a record in parent if exist in child, have to delete ALL child records first</p>
+</div>
+<div id="cascade" class="section level5 hasAnchor" number="1.3.8.6.3">
+<h5><span class="header-section-number">1.3.8.6.3</span> CASCADE<a href="#cascade" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>will delete record in parent and ALL related records in child</p>
+</div>
+<div id="nullify" class="section level5 hasAnchor" number="1.3.8.6.4">
+<h5><span class="header-section-number">1.3.8.6.4</span> NULLIFY<a href="#nullify" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>will delete record in parent and set FK field in child to NULL (FK field has to be set to allow nulls)</p>
+</div>
+<div id="set-default" class="section level5 hasAnchor" number="1.3.8.6.5">
+<h5><span class="header-section-number">1.3.8.6.5</span> SET DEFAULT<a href="#set-default" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>will delete in parent update FK to a specified default value YOU set in the RDBMS</p>
+</div>
+</div>
+<div id="participation-type" class="section level4 hasAnchor" number="1.3.8.7">
+<h4><span class="header-section-number">1.3.8.7</span> Participation Type<a href="#participation-type" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>the type of participation assigned a given table determines whether a record must exist in the table BEFORE you can enter any records into the related table. There are two main types</p>
+<div id="mandatory" class="section level5 hasAnchor" number="1.3.8.7.1">
+<h5><span class="header-section-number">1.3.8.7.1</span> MANDATORY<a href="#mandatory" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>“At least one record must exist in this table before you can enter any records into the related table.”</p>
+</div>
+<div id="optional" class="section level5 hasAnchor" number="1.3.8.7.2">
+<h5><span class="header-section-number">1.3.8.7.2</span> OPTIONAL<a href="#optional" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>“There is no requirement for any records to exist in this table before you can enter records into the related table.”</p>
+</div>
+</div>
+<div id="degree-of-participation" class="section level4 hasAnchor" number="1.3.8.8">
+<h4><span class="header-section-number">1.3.8.8</span> Degree of Participation<a href="#degree-of-participation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>the degree of participation is the MINIMUM number of records that a given table MUST HAVE associated with a single record in the related table and the MAXIMUM number a given table CAN HAVE associated with a single record in the related table (uses 2 numbers off set by commas w/i parentheses (min,max))</p>
+<p>also applies to self-referring relationships</p>
+<p>use <strong>N</strong> for infinite assiciations</p>
+</div>
+<div id="verify-relationship-checklist" class="section level4 hasAnchor" number="1.3.8.9">
+<h4><span class="header-section-number">1.3.8.9</span> Verify Relationship Checklist<a href="#verify-relationship-checklist" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Make sure that you’ve properly identified each relationship.</li>
+<li>Make certain that you’ve properly established each relationship.</li>
+<li>Make certain that each foreign key complies with the Elements of a Foreign Key.</li>
+<li>Make sure that you’ve established an appropriate deletion rule for each relationship.</li>
+<li>Make certain that you’ve identified the proper type of participation for each table within a dual-table relationship and for the appropriate key fields in a self-referencing relationship.</li>
+<li>Make certain that you’ve identified the proper degree of participation for each table within a dual-table relationship and</li>
+</ol>
+</div>
+<div id="relationship-level-integrity" class="section level4 hasAnchor" number="1.3.8.10">
+<h4><span class="header-section-number">1.3.8.10</span> <strong>Relationship-Level Integrity</strong><a href="#relationship-level-integrity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The connection between the two tables (or key fields) in a relationship is sound.</li>
+<li>You can insert new records into each table in a meaningful manner.</li>
+<li>You can delete an existing record without producing any adverse effects.</li>
+<li>A meaningful limit exists for the number of records that can be interrelated within the relationship.</li>
+</ul>
+</div>
+<div id="diagrams" class="section level4 hasAnchor" number="1.3.8.11">
+<h4><span class="header-section-number">1.3.8.11</span> <u>DIAGRAMS</u><a href="#diagrams" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><img src="images/clipboard-3030770665.png" /><img src="images/clipboard-3659631141.png" /><img src="images/clipboard-4050697932.png" /><img src="images/clipboard-79583873.png" /><img src="images/clipboard-1798074063.png" /><img src="images/clipboard-3040765671.png" /><img src="images/clipboard-651363942.png" /><img src="images/clipboard-2551307607.png" /><img src="images/clipboard-2721323241.png" /><img src="images/clipboard-2520375409.png" /><img src="images/clipboard-2987611540.png" /><img src="images/clipboard-3519909343.png" /><img src="images/clipboard-4119125296.png" /><img src="images/clipboard-247194523.png" /><img src="images/clipboard-1780086652.png" /><img src="images/clipboard-462816233.png" /><img src="images/clipboard-3190337088.png" /><img src="images/clipboard-1660869064.png" /></p>
+</div>
+</div>
+<div id="ch.-11" class="section level3 tabset hasAnchor" number="1.3.9">
+<h3><span class="header-section-number">1.3.9</span> Ch. 11<a href="#ch.-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A <strong>business rule</strong> is a statement that imposes some form of constraint on a specific aspect of the database, such as the elements within a field specification for a particular field or the characteristics of a given relationship ex.</p>
+<blockquote>
+<p>a <em>ship date</em> cannot be before an <em>order date</em> while this is technically possible within the DB adding this constraint allows the <em>ship date</em> to be an actually meaningful date vs. nonsense</p>
+</blockquote>
+<p>You base a business rule on the way the organization perceives and uses its data, which you determine from the manner in which the organization functions or conducts its business.</p>
+<p>Business rules often apply to the <strong>Degree of Participation</strong> between tables, which is often not able to be established as an in-database logical constraint</p>
+<div id="types-of-business-rules" class="section level4 hasAnchor" number="1.3.9.1">
+<h4><span class="header-section-number">1.3.9.1</span> Types of business rules<a href="#types-of-business-rules" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>The two major types of business rules are <strong>Database Oriented</strong> and <strong>Application Oriented</strong>. Both enforce constraints and data integrity, but differ in where and how they are established.</li>
+</ul>
+<div id="database-oriented-business-rules" class="section level5 hasAnchor" number="1.3.9.1.1">
+<h5><span class="header-section-number">1.3.9.1.1</span> Database Oriented Business Rules<a href="#database-oriented-business-rules" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>impose constraints you can establish w/i the logical design of the database by modifying field spec. elements and/or relationship char.</p>
+<p>MUST be able to meaningfully and clearly establish constraint by either means</p>
+<blockquote>
+<p>ex. noodles only exist in midwest allow only midwest states in range of values</p>
+</blockquote>
+</div>
+<div id="application-oriented-business-rules" class="section level5 hasAnchor" number="1.3.9.1.2">
+<h5><span class="header-section-number">1.3.9.1.2</span> Application Oriented Business Rules<a href="#application-oriented-business-rules" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>impose constraints that you cannot establish w/i logical design of DB must instead be established w/i physical design or the database software application design</p>
+<blockquote>
+<p>ex. members earn 15% discount, This business rule determines the amount of discount applied to a customer’s purchases, based on a particular status. You cannot establish this constraint meaningfully in the logical design for two reasons: There is no field in which to store the discount amount (the amount is a result of a calculation, and calculated fields are not allowed in a table), and there is no way to indicate the criterion used-the customer’s status-to determine the discount. You must establish this rule within the physical design of the database or the design of the database application.</p>
+</blockquote>
+</div>
+</div>
+<div id="categories-of-business-rules" class="section level4 hasAnchor" number="1.3.9.2">
+<h4><span class="header-section-number">1.3.9.2</span> Categories of business rules<a href="#categories-of-business-rules" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="field-specific-business-rule" class="section level5 hasAnchor" number="1.3.9.2.1">
+<h5><span class="header-section-number">1.3.9.2.1</span> Field-Specific Business rule<a href="#field-specific-business-rule" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>impose constraints on the elements of a field specification for a particular field. The number of elements a given rule affects depends on the manner in which you define that rule.</p>
+</div>
+<div id="relationship-specific-business-rules" class="section level5 hasAnchor" number="1.3.9.2.2">
+<h5><span class="header-section-number">1.3.9.2.2</span> Relationship-Specific Business Rules<a href="#relationship-specific-business-rules" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>impose constraints that affect the characteristics of a relationship.</p>
+</div>
+</div>
+<div id="defining-and-establishing-field-specific-business-rules" class="section level4 hasAnchor" number="1.3.9.3">
+<h4><span class="header-section-number">1.3.9.3</span> Defining and Establishing Field-Specific Business rules<a href="#defining-and-establishing-field-specific-business-rules" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Select a table.</li>
+<li>Review each field and determine whether it requires any constraints.</li>
+<li>Define the necessary business rules for the field.</li>
+<li>Establish the rules by modifying the appropriate field specification elements.</li>
+<li>Determine what actions test the rule.</li>
+<li>Record the rule on a Business Rule Specifications sheet</li>
+</ol>
+</div>
+<div id="defining-and-establishing-relationship-specific-business-rules" class="section level4 hasAnchor" number="1.3.9.4">
+<h4><span class="header-section-number">1.3.9.4</span> Defining and Establishing relationship-Specific Business rules<a href="#defining-and-establishing-relationship-specific-business-rules" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Select a relationship.</li>
+<li>Review the relationship and determine whether it requires any constraints.</li>
+<li>Define the necessary business rules for the relationship.</li>
+<li>Establish the rule by modifying the appropriate relationship characteristics.</li>
+<li>Determine what actions will test the rule.</li>
+<li>Record the rule on a Business Rule Specifications sheet.</li>
+</ol>
+</div>
+<div id="validation-tables" class="section level4 hasAnchor" number="1.3.9.5">
+<h4><span class="header-section-number">1.3.9.5</span> Validation Tables<a href="#validation-tables" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Typically used to limit field values</p>
+<p>stores data used to implement data integrity, not often edited and usually comprised of only 2 fields</p>
+<ol style="list-style-type: decimal">
+<li>the first acts as the primary key and is what is used to enforce data integrity,</li>
+<li>the second is a non-key field that stores a set of values required by some other field in the DB</li>
+</ol>
+<p><img src="images/clipboard-1615206767.png" /></p>
+</div>
+</div>
+<div id="ch.-12" class="section level3 tabset hasAnchor" number="1.3.10">
+<h3><span class="header-section-number">1.3.10</span> Ch. 12<a href="#ch.-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Views are virtual tables comprised of fields from one or more tables in the database or from other views</p>
+<p>Views can be used to work with data from multiple tables simultaneously, and has more customization.</p>
+<p>also has other diagram</p>
+<div id="view-definitions" class="section level4 hasAnchor" number="1.3.10.1">
+<h4><span class="header-section-number">1.3.10.1</span> View Definitions<a href="#view-definitions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="view-impositionfiltering" class="section level5 hasAnchor" number="1.3.10.1.1">
+<h5><span class="header-section-number">1.3.10.1.1</span> <strong>View Imposition/Filtering</strong><a href="#view-impositionfiltering" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>you can impose criteria against one or more fields in the view to filter the records it displays, keep in mind for things which have multiple iterations in different context specification likely needed, (ie. multiple cities with the same name in different states) but know the field with the criteria imposed upon it MUST be included in the view or else it doesnt work.</p>
+</div>
+<div id="single-table-data-view" class="section level5 hasAnchor" number="1.3.10.1.2">
+<h5><span class="header-section-number">1.3.10.1.2</span> Single-Table Data View<a href="#single-table-data-view" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>data can be modified at any time, pulls from only one table and repopulates data every time it is accessed due to how views work.</p>
+</div>
+<div id="multi-table-view" class="section level5 hasAnchor" number="1.3.10.1.3">
+<h5><span class="header-section-number">1.3.10.1.3</span> Multi-Table View<a href="#multi-table-view" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>you can define a view using more than one table, but the tables have to have a relationship. you can only edit some of the data.</p>
+<p>Redundancy in views is ok because data is not stored</p>
+</div>
+<div id="aggregate-view" class="section level5 hasAnchor" number="1.3.10.1.4">
+<h5><span class="header-section-number">1.3.10.1.4</span> Aggregate View<a href="#aggregate-view" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>you can define an aggregate view using one or more base tables and one or more calculated fields</p>
+<p>All the fields in an aggregate views are considered <em>grouping fields</em> so cannot be modified.</p>
+</div>
+<div id="validation-view" class="section level5 hasAnchor" number="1.3.10.1.5">
+<h5><span class="header-section-number">1.3.10.1.5</span> Validation View<a href="#validation-view" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>most commonly just one table and a few fields</p>
+</div>
+</div>
+<div id="view-specification-sheet" class="section level4 hasAnchor" number="1.3.10.2">
+<h4><span class="header-section-number">1.3.10.2</span> View Specification Sheet<a href="#view-specification-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><p><strong>NAME</strong>: The guidelines for naming tables apply to views as well, with the exception that the name of a view can implicitly or explicitly identify more than one subject.</p></li>
+<li><p><strong>TYPE</strong>: data, aggregate, or validation views</p></li>
+<li><p><strong>BASE TABLES</strong>: the views base table names</p></li>
+<li><p><strong>CALCULATED FIELD EXPRESSION</strong>: name of calculated field in standard of field name w/ 2 exceptions you can implicitly or explicitly identify more than one characteristic in a name, and you can use the plural form of the name (but generally don’t).</p></li>
+<li><p><strong>FILTERS</strong>: criteria views will use, both field and expression</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="forta-notes" class="section level2 tabset hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> <strong><em>Forta Notes</em></strong><a href="#forta-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="lesson-1" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Lesson 1<a href="#lesson-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The information that describes a table is called <strong>Schema</strong></p>
+<p><strong>Datatype</strong> is the type of data that is able to be stored in columns (there are ways to restrict to specific datatypes)</p>
+<p>Records and rows are often used as interchangeable terms</p>
+<p>the <strong>Primary Key</strong> is the column or columns that uniquely identify the rows in a table (should always be defined though not always strictly necessary) - no two rows can have the same primary key value, all rows must have a primary key value that should never be modified or updated or reused even if row deleted (if multiple columns are used the individuality rule applies to the combined value of the columns)</p>
+<p><strong>““</strong> are used to delineate a string they are NOT used for numbers</p>
+</div>
+<div id="lesson-2-showing-data" class="section level3 tabset hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Lesson 2 showing data<a href="#lesson-2-showing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="select" class="section level4 hasAnchor" number="1.4.2.1">
+<h4><span class="header-section-number">1.4.2.1</span> <code>SELECT</code><a href="#select" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>is used to visualize data from a database as a result table</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">SELECT</span> column1, column2, <span class="op">..</span><span class="ch">.</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="kw">FROM</span> table_name;</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co"># or if you want to return the whole table</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table_name</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">/* or if you want to select only</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="co">the distinct values of the column</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co">DISTINCT is placed in front of it</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">(if used on multiple columns it</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="co">only works on the combined column</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="co">not the individual columns)*/</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="kw">SELECT</span> column1, <span class="kw">DISTINCT</span> column2, <span class="op">..</span><span class="ch">.</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="kw">FROM</span> table_name</span></code></pre></div>
+</div>
+<div id="desc" class="section level4 hasAnchor" number="1.4.2.2">
+<h4><span class="header-section-number">1.4.2.2</span> <code>DESC</code><a href="#desc" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>or <code>DESCRIBE</code> is used to show the structure of a table</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="kw">DESC</span> table_name;</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Type</th>
+<th>NULL</th>
+<th>Key</th>
+<th>Default</th>
+<th>Extra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>col_1</td>
+<td>CHAR(5)</td>
+<td>NO</td>
+<td>PRI</td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>col_2</td>
+<td>INT</td>
+<td>YES</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>col_3</td>
+<td>VARCHAR(25)</td>
+<td>NO</td>
+<td></td>
+<td>NULL</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="see-table-constraintsfk" class="section level4 hasAnchor" number="1.4.2.3">
+<h4><span class="header-section-number">1.4.2.3</span> See table constraints/FK<a href="#see-table-constraintsfk" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>There are two main ways to see the foreign keys in your table one is</p>
+<p><code>SHOW CREATE TABLE table_name</code> which returns the syntax as if you were setting up your table.</p>
+<p>the other is to do is use the <code>information_schema</code> database and select a table that has the relevant columns</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="kw">USE</span> INFORMATION_SCHEMA;</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="kw">SELECT</span> table_name,</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>       constraint_name,</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>       referenced_table_name,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>       delete_rule,</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="kw">FROM</span> referential_constraints</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="kw">WHERE</span> constraint_schema <span class="op">=</span> <span class="st">&quot;&lt;your_database_name&gt;&quot;</span> </span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>      <span class="kw">AND</span> table_name <span class="op">=</span> <span class="st">&quot;&lt;your_table_name&gt;&quot;</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="kw">USE</span> INFORMATION_SCHEMA;</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="kw">SELECT</span> TABLE_NAME,</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>       COLUMN_NAME,</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>       CONSTRAINT_NAME,</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>       REFERENCED_TABLE_NAME,</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>       REFERENCED_COLUMN_NAME</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="kw">FROM</span> KEY_COLUMN_USAGE</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="kw">WHERE</span> TABLE_SCHEMA <span class="op">=</span> <span class="st">&quot;&lt;your_database_name&gt;&quot;</span> </span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>      <span class="kw">AND</span> TABLE_NAME <span class="op">=</span> <span class="st">&quot;&lt;your_table_name&gt;&quot;</span> </span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>      <span class="kw">AND</span> REFERENCED_COLUMN_NAME <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code></pre></div>
+<p>which returns as example</p>
+<p><img src="images/clipboard-1435441118.png" /></p>
+<p>for copying DO NOT FORGET TO CHANGE THE DB NAME AND TABLE NAME</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="kw">use</span> information_schema; <span class="kw">select</span> table_name, column_name, constraint_name, referenced_table_name, referenced_column_name <span class="kw">from</span> key_column_usage <span class="kw">where</span> table_schema <span class="op">=</span> <span class="st">&quot;mydatabasename&quot;</span> <span class="kw">and</span> table_name <span class="op">=</span> <span class="st">&quot;mytablename&quot;</span> <span class="kw">and</span> referenced_column_name <span class="kw">is</span> <span class="kw">not</span> <span class="kw">null</span>;</span></code></pre></div>
+</div>
+<div id="aliasing-as" class="section level4 hasAnchor" number="1.4.2.4">
+<h4><span class="header-section-number">1.4.2.4</span> Aliasing (<code>AS</code>)<a href="#aliasing-as" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Aliasing is used to get a different name for either a single column or when combining columns, most commonly used to shorten names</p>
+<p><strong>IF YOU WANT TO GET A COLUMN NAME FOR ANY SUMMARY FUNCTIONS YOU MUST USE <code>AS()</code> FUNCTION</strong></p>
+<p>can specify distinct on all functions as well to get only the distinct values (can only be used on specified SINGLE columns</p>
+<p><strong>These go around the column name in the <code>SELECT</code> function</strong></p>
+<p><code>AS</code> can also be omitted IF the alias directly follows the name it is aliasing. ex. <code>SELECT col1 AS 1col</code> could also be <code>SELECT col1 1col</code> which would render the same thing and it works for <code>CONCAT</code> as well</p>
+</div>
+</div>
+<div id="lesson-3-order-by-limit" class="section level3 hasAnchor" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Lesson 3 (<code>ORDER BY</code> &amp; <code>LIMIT</code>)<a href="#lesson-3-order-by-limit" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>ORDER BY</code> is used by listing column name that the data from a select will be sorted by <strong>NEEDS TO BE LAST IN SELECT STATEMENT</strong>,</p>
+<blockquote>
+<p>column used to sort does not necessarily need to be one being displayed</p>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> column1 <span class="co">--orders in ascending order</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co"># this can be used on multiple columns</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> column1, column2 <span class="co">-- orders first by column1 then by column2</span></span></code></pre></div>
+<p>you can also sort by column position using numbers.</p>
+<p><code>LIMIT</code> is used to specify the number of records to return</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1 <span class="kw">LIMIT</span> <span class="dv">3</span>; <span class="co">--returns 1st 3 records  SELECT * FROM table1 LIMIT 3 OFFSET 3; -- returns records 4 thru 6  # this can also follow the syntax SELECT * FROM table1 LIMIT 3,3; -- which returns the same as the previous query</span></span></code></pre></div>
+</div>
+<div id="lesson-4-where" class="section level3 hasAnchor" number="1.4.4">
+<h3><span class="header-section-number">1.4.4</span> Lesson 4 (<code>WHERE</code>)<a href="#lesson-4-where" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>WHERE</code> is used to select only rows where the specified column is the specified value.</p>
+<blockquote>
+<p><code>WHERE</code> can also be used in other operations</p>
+</blockquote>
+<p><code>ORDER BY</code> MUST come after <code>WHERE</code> else there are errors</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="kw">WHERE</span> column1 <span class="op">=</span> <span class="dv">1</span>;</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#using the between operator requires AND between the options</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="kw">WHERE</span> column1 <span class="kw">BETWEEN</span> <span class="dv">1</span> <span class="kw">AND</span> <span class="dv">5</span>;</span></code></pre></div>
+<p><img src="images/clipboard-1988611271.png" width="315" /></p>
+</div>
+<div id="lesson-5-andorinnot" class="section level3 hasAnchor" number="1.4.5">
+<h3><span class="header-section-number">1.4.5</span> Lesson 5 (<code>AND</code>/<code>OR</code>/<code>IN</code>/<code>NOT</code>)<a href="#lesson-5-andorinnot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can combine <code>where</code> clauses by using any combination of <code>and</code> + <code>or</code> clauses, using parentheses to maintain groups and specific orders is important</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="kw">WHERE</span> column1 <span class="op">=</span> <span class="dv">1</span> <span class="kw">AND</span> column2 <span class="op">!=</span><span class="dv">1</span> ;</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#returns all records that fulfill both conditions</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="kw">WHERE</span> column1 <span class="op">=</span> <span class="dv">1</span> <span class="kw">OR</span> <span class="kw">column</span> <span class="dv">1</span> <span class="op">!=</span> <span class="dv">1</span>;</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#returns all records that fulfill either condition</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1</span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="kw">WHERE</span> <span class="kw">NOT</span> column1 <span class="op">=</span> <span class="st">&quot;text&quot;</span>;</span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#returns all records where column1 is NOT &quot;text&quot;</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="kw">WHERE</span> column1 <span class="kw">IN</span> (<span class="st">&quot;text&quot;</span>,<span class="st">&quot;text2&quot;</span>,<span class="st">&quot;text3&quot;</span>);</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a><span class="co">/*essentially multiple OR statements in one </span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a><span class="co">(can also use the NOT condition)*/</span></span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> table1</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="kw">WHERE</span> column1 <span class="kw">IN</span> (<span class="kw">SELECT</span> columnA <span class="kw">FROM</span> table2);</span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a><span class="co">#returns all records where column1 is in columna of table2</span></span></code></pre></div>
+</div>
+<div id="lesson-6-like" class="section level3 hasAnchor" number="1.4.6">
+<h3><span class="header-section-number">1.4.6</span> Lesson 6 (<code>LIKE</code>)<a href="#lesson-6-like" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>like</code> is a wildcard operator that allows for a comparison as a wildcard match vs. a straight equality match</p>
+<p>the most frequently used wildcard is <code>%</code> which w/i a search string means <em>match any number of occurrences of any character</em> ex. “fish%” = “fish”,“fishes”,“fish food”,… or “%food%” = “fish food”, “food bag”, “dog food bag”,… or “b%g” = “bag”, “bog”,… (DOES NOT work for <code>NULL</code> values)</p>
+<p>the <code>_</code> wildcard matches an SINGLE character in that spot</p>
+<blockquote>
+<p>a note - some DBMS pad field contents with spaces, and a search will not work because there are extraneous spaces at the end that do not have a wildcard marker</p>
+</blockquote>
+</div>
+<div id="lesson-7-concat-trim" class="section level3 hasAnchor" number="1.4.7">
+<h3><span class="header-section-number">1.4.7</span> Lesson 7 (<code>CONCAT</code>) &amp; (<code>TRIM</code>)<a href="#lesson-7-concat-trim" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In SQL <code>select</code> statements you can concatenate (join values together) using either <code>+</code> or <code>||</code> dependant on DBMS for MySQL must use <code>Concat</code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">CONCAT</span> (value1, value2, etc)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="kw">FROM</span> table_id</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> value1;</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co">#which returns the response in 1 column w/o a name</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>value1_1 value2_1</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>value1_2 value2_2</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#to get a name use `as`</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">CONCAT</span> (value1, value2)</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="kw">AS</span> col_id</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="kw">FROM</span> table_id</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> value1;</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#which equals</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>col_id</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co">-------------------</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>value1_1 value2_1</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>value1_2 value2_2</span></code></pre></div>
+<p>it is HIGHLY recommended to alias columns with multiword names to single word names (these are sometimes called “Derived columns”)</p>
+<blockquote>
+<p>for <code>+</code> or <code>||</code> remove <code>CONCAT()</code> and place the symbol in replacement of the commas <code>,</code></p>
+</blockquote>
+<p>you can also calculate using columns in the expected manner</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="kw">SELECT</span> num_id,         num1<span class="op">*</span>num2 <span class="kw">AS</span> num_sum <span class="kw">FROM</span> table_id  </span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co">#which would return the two columns  </span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>num_id      num_sum</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">----------     ----------- </span></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>num_id1   num_sum1 </span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>num_id2   num_sum2 </span></code></pre></div>
+<p><strong>to trim unneeded spaces you can use the function <code>rtrim()</code>, <code>ltrim()</code>, or <code>trim()</code> which respectively trim the right, left, and both sides of the string</strong></p>
+</div>
+<div id="lesson-8-functions" class="section level3 tabset hasAnchor" number="1.4.8">
+<h3><span class="header-section-number">1.4.8</span> Lesson 8 functions<a href="#lesson-8-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>functions tend to be very DMBS specific</p>
+<p><code>SUBSTRING()</code> will extract parts of a string, <code>CONVERT()</code> will allow you to change your datatype, <code>CURDATE()</code> will allow you to get the current date</p>
+<p>there are a few main types of functions</p>
+<div id="text-functions" class="section level4 hasAnchor" number="1.4.8.1">
+<h4><span class="header-section-number">1.4.8.1</span> Text functions<a href="#text-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>which are used to manipulate strings of text (for example, trimming or padding values and converting values to upper- and lowercase).</li>
+</ul>
+<p><img src="images/clipboard-3672707005.png" /></p>
+<p><code>SOUNDEX</code> is an algorithm that converts any string of text into an alphanumeric pattern describing the phonetic representation of that text allowing strings to be compared by how they sound instead of how they have been typed</p>
+<p>ex. <code>SOUNDEX('Michael Green')</code> would return “<em>Michelle Green</em>” as a result</p>
+</div>
+<div id="numeric-functions" class="section level4 hasAnchor" number="1.4.8.2">
+<h4><span class="header-section-number">1.4.8.2</span> Numeric functions<a href="#numeric-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>which are used to perform mathematical operations on numeric data (for example, returning absolute numbers and performing algebraic calculations).</li>
+</ul>
+</div>
+<div id="date-and-time-functions" class="section level4 hasAnchor" number="1.4.8.3">
+<h4><span class="header-section-number">1.4.8.3</span> Date and time functions<a href="#date-and-time-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>which are used to manipulate date and time values and to extract specific components from these values (for example, returning differences between dates and checking date validity).</li>
+</ul>
+<p><img src="images/clipboard-1833037136.png" /></p>
+</div>
+<div id="formatting-functions" class="section level4 hasAnchor" number="1.4.8.4">
+<h4><span class="header-section-number">1.4.8.4</span> Formatting functions<a href="#formatting-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>which are used to generate user-friendly outputs (for example, displaying dates in local languages and formats, or currencies with the right symbols and comma placement).</li>
+</ul>
+</div>
+<div id="system-functions" class="section level4 hasAnchor" number="1.4.8.5">
+<h4><span class="header-section-number">1.4.8.5</span> System functions<a href="#system-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>which return information specific to the DBMS being used (for example, returning user login information).</li>
+</ul>
+</div>
+</div>
+<div id="lesson-9-summarizing" class="section level3 hasAnchor" number="1.4.9">
+<h3><span class="header-section-number">1.4.9</span> Lesson 9 summarizing<a href="#lesson-9-summarizing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="images/clipboard-2041215768.png" /></p>
+<div id="avg" class="section level4 hasAnchor" number="1.4.9.1">
+<h4><span class="header-section-number">1.4.9.1</span> <code>AVG</code><a href="#avg" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>average value of all or specified col/rows - can use any filtering - <strong>If you want to average multiple columns separately you HAVE to do multiple <code>AVG()</code> functions doing only one will average all columns together</strong> - NULL values are ignored by <code>AVG()</code></p>
+</div>
+<div id="count" class="section level4 hasAnchor" number="1.4.9.2">
+<h4><span class="header-section-number">1.4.9.2</span> <code>COUNT</code><a href="#count" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>is used 2 ways, <code>COUNT(*)</code> to get num rows in table, or <code>COUNT(column)</code> to gen num rows NOT NULL in column</p>
+</div>
+<div id="maxmin" class="section level4 hasAnchor" number="1.4.9.3">
+<h4><span class="header-section-number">1.4.9.3</span> <code>MAX</code>&amp;<code>MIN</code><a href="#maxmin" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>MAX()</code> returns highest value in <strong>specified</strong> column - <em>some DBMS allow it to return the row that would be last if data sorted by that column for textual data</em></p>
+<p><code>MIN()</code> returns lowest value in <strong>specified</strong> column (ignoring NULL) - <em>some DBMS allow it to return the row that would be 1st if data sorted by that column for textual data</em></p>
+</div>
+<div id="sum" class="section level4 hasAnchor" number="1.4.9.4">
+<h4><span class="header-section-number">1.4.9.4</span> <code>SUM</code><a href="#sum" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>total of the values in specified column(s) (ignoring NULL) - <em>can be used on column calculations</em></p>
+</div>
+</div>
+<div id="lesson-10-grouping" class="section level3 hasAnchor" number="1.4.10">
+<h3><span class="header-section-number">1.4.10</span> Lesson 10 grouping<a href="#lesson-10-grouping" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="images/clipboard-3317083487.png" /></p>
+<p><code>GROUP BY</code> groups the data in the response by the specified column(s)</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="kw">SELECT</span> column_name(s)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="kw">FROM</span> table_name</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="kw">WHERE</span> condition</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> column_name(s)</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> column_name(s); </span></code></pre></div>
+<p>You also want to use <code>ORDER BY</code> when grouping to get a coherent sorting</p>
+<blockquote>
+<ul>
+<li><code>GROUP BY()</code> clauses can contain as many columns as you want. This enables you to nest groups, providing you with more granular control over how data is grouped.</li>
+<li>If you have nested groups in your <code>GROUP BY</code> clause, data is summarized at the last specified group. In other words, all the columns specified are evaluated together when grouping is established (so you won’t get data back for each individual column level).</li>
+<li>Every column listed in <code>GROUP BY</code> must be a retrieved column or a valid expression (but not an aggregate function). If an expression is used in the <code>SELECT</code>, that same expression must be specified in <code>GROUP BY</code>. Aliases cannot be used.</li>
+<li>Most SQL implementations do not allow <code>GROUP BY</code> columns with variable length datatypes (such as text or memo fields).</li>
+<li>Aside from the aggregate calculation statements, every column in your <code>SELECT</code> statement must be present in the <code>GROUP BY</code> clause.</li>
+<li>If the grouping column contains a row with a NULL value, NULL will be returned as a group. If there are multiple rows with NULL values, they’ll all be grouped together.</li>
+<li>The <code>GROUP BY</code> clause must come after any <code>WHERE</code> clause and before any <code>ORDER BY</code> clause. although <code>WHERE</code> only looks at specific rows having no concept of groups</li>
+</ul>
+</blockquote>
+<p><code>HAVING</code> is what is needed in order to filter the grouping itself and all options for <code>WHERE</code> can be used for <code>HAVING</code> ex.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="kw">SELECT</span> column1 <span class="fu">AVG</span>(<span class="op">*</span>) <span class="kw">AS</span> col_num</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="kw">FROM</span> table_id</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> column1</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="kw">HAVING</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="op">&gt;</span> <span class="dv">2</span>;</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co">/* which returns the number of rows in</span></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="co">column1 that have more than 2 rows </span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="co">WHERE wouldn&#39;t work in this situation</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="co">because you want the filtering w/i the</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="co">grouping not before or after*/</span></span></code></pre></div>
+<p>you can use <code>WHERE</code> and <code>HAVING</code> in the same statement</p>
+<p><img src="images/clipboard-477637998.png" /></p>
+</div>
+<div id="lesson-11-subqueries" class="section level3 hasAnchor" number="1.4.11">
+<h3><span class="header-section-number">1.4.11</span> Lesson 11 subqueries<a href="#lesson-11-subqueries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>you can run <code>SELECT</code> statements w/i each other in order to extra filter (a subquerie) they process the innermost statement and work outward</p>
+<p>subqueries can ONLY retrieve single columns</p>
+</div>
+<div id="lesson-12-inner-join" class="section level3 hasAnchor" number="1.4.12">
+<h3><span class="header-section-number">1.4.12</span> Lesson 12 (<code>INNER JOIN</code>)<a href="#lesson-12-inner-join" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="inner-joins" class="section level4 hasAnchor" number="1.4.12.1">
+<h4><span class="header-section-number">1.4.12.1</span> Inner Joins<a href="#inner-joins" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>only</strong> keeps rows that appear in both</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="co">#to Inner Join Tables</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="kw">SELECT</span> col1, col2, col3</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="kw">FROM</span> table1</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="kw">INNER</span> <span class="kw">JOIN</span> table2 </span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="kw">ON</span> table1<span class="ch">.</span>idkey <span class="op">=</span> table2<span class="ch">.</span>idkey;</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#(=) is equijoin just use (&lt;&gt;) for not</span></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="co">/*you can INNER JOIN multiple tables</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a><span class="co">just use multiple INNER JOIN commands*/</span></span></code></pre></div>
+</div>
+<div id="natural-joins" class="section level4 hasAnchor" number="1.4.12.2">
+<h4><span class="header-section-number">1.4.12.2</span> Natural Joins<a href="#natural-joins" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Natural joins are inner joins that only return unique data (most common)</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="kw">SELECT</span> col1, col2</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="kw">FROM</span> table1</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="kw">NATURAL</span> <span class="kw">JOIN</span> table2;</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co">/* this returns the same thing as </span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="co">an INNER JOIN with an ON clause*/</span></span></code></pre></div>
+</div>
+</div>
+<div id="lesson-13-outer-joins" class="section level3 hasAnchor" number="1.4.13">
+<h3><span class="header-section-number">1.4.13</span> Lesson 13 “Outer Joins”<a href="#lesson-13-outer-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="self-joins" class="section level4 hasAnchor" number="1.4.13.1">
+<h4><span class="header-section-number">1.4.13.1</span> Self Joins<a href="#self-joins" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Self joins can be used as an alternate to subqueries</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="kw">SELECT</span> col1, col2</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="kw">FROM</span> table1 <span class="kw">AS</span> t1, table1 <span class="kw">AS</span> t2</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="kw">WHERE</span> condition;</span></code></pre></div>
+</div>
+<div id="left-join" class="section level4 hasAnchor" number="1.4.13.2">
+<h4><span class="header-section-number">1.4.13.2</span> Left Join<a href="#left-join" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>returns all records from the table on the left (t1) and the matching ones from the right (t2) or none if they don’t exist (can also be called <code>LEFT OUTER JOIN</code>)</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="kw">SELECT</span> col1, col2</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="kw">FROM</span> table1</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> table2</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="kw">ON</span> table1<span class="ch">.</span>colname <span class="op">=</span> table2<span class="ch">.</span>colname;</span></code></pre></div>
+</div>
+<div id="right-join" class="section level4 hasAnchor" number="1.4.13.3">
+<h4><span class="header-section-number">1.4.13.3</span> Right Join<a href="#right-join" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>returns all records from the table on the right (t2) and the matching ones from the left (t1) or none if they don’t exist (can also be called <code>RIGHT OUTER JOIN</code>)</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="kw">SELECT</span> col1, col2 </span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="kw">FROM</span> table1 </span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a><span class="kw">RIGHT</span> <span class="kw">JOIN</span> table2 </span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="kw">ON</span> table1<span class="ch">.</span>colname <span class="op">=</span> table2<span class="ch">.</span>colname;</span></code></pre></div>
+</div>
+<div id="cross-join-full-join" class="section level4 hasAnchor" number="1.4.13.4">
+<h4><span class="header-section-number">1.4.13.4</span> Cross Join (Full Join)<a href="#cross-join-full-join" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>return all records from both tables (adding a <code>where</code> makes it essentially an inner join)</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="kw">SELECT</span> col1, col2</span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="kw">FROM</span> table1</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="kw">CROSS</span> <span class="kw">JOIN</span> table2;</span></code></pre></div>
+</div>
+</div>
+<div id="lesson-14-union" class="section level3 hasAnchor" number="1.4.14">
+<h3><span class="header-section-number">1.4.14</span> Lesson 14 (<code>UNION</code>)<a href="#lesson-14-union" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>multiple <code>SELECT</code> statements are typically called “unions” or “compound queries”</p>
+<p>and can be linked by the <code>UNION</code> function (it is most useful with complex queries or from multiple tables)</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="kw">SELECT</span> col1, col2, col3</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="kw">FROM</span> table1</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="kw">WHERE</span> col1 <span class="op">&gt;</span> <span class="dv">1</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="kw">UNION</span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="kw">SELECT</span> col1, col2, col3</span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="kw">FROM</span> table1</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="kw">WHERE</span> col2 <span class="op">=</span> <span class="st">&#39;name&#39;</span>;</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="co">/*this would return one table</span></span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="co">that combined both statements*/</span></span></code></pre></div>
+<hr />
+<p><span class="math display">\[
+Rules
+\]</span></p>
+<ul>
+<li><code>UNION</code> must be composed of two or more <code>SELECT</code> statements, each separated by the keyword <code>UNION</code> and the columns MUST be in the same order</li>
+<li>Each query in a <code>UNION</code> must contain the same columns, expressions, or aggregate functions (and some DBMSs even require that columns be listed in the same order)</li>
+<li>Column datatypes must be compatible. They need not be the same name or the exact same type, but they must be of a type that the DBMS can implicitly convert (for example, different numeric types or different date types)
+<ul>
+<li>if the name is different it will take the first one</li>
+</ul></li>
+<li><code>UNION</code> removed duplicated to return all use <code>UNION ALL</code> which a <code>WHERE</code> clause cannot do</li>
+</ul>
+</div>
+<div id="lesson-15-insert" class="section level3 hasAnchor" number="1.4.15">
+<h3><span class="header-section-number">1.4.15</span> Lesson 15 (<code>INSERT</code>)<a href="#lesson-15-insert" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>Insert</code> is used to add rows, (complete, partial, or query results) you can just specify the table then list your values</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> table_name</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="kw">VALUES</span> (<span class="st">&#39;value1&#39;</span>, num1, <span class="st">&#39;value3&#39;</span>, <span class="kw">NULL</span>, etc<span class="op">..</span><span class="ch">.</span>);</span></code></pre></div>
+<p>HOWEVER it is safer and better practice to define the row order <code>table name(row, names, in order, needed);</code> and then the <code>values</code> in the same order specified, and a value must exist for each specified column. you can also include multiple rows by putting them in parentheses separated by a comma</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> table_name (column1, column2) </span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a><span class="kw">VALUES</span> (<span class="st">&#39;value1&#39;</span>, <span class="st">&#39;value2&#39;</span>), (<span class="st">&#39;value1&#39;</span>, <span class="st">&#39;value2&#39;</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a><span class="co">#which would add two rows to column 1 and 2</span></span></code></pre></div>
+<p>you can omit columns to insert partial row, - BUT that only works if the columns not used have a default value or allow <code>NULL</code> (which covers for not putting values)</p>
+<p><code>insert</code> can be used with <code>select</code> in one command (<code>insert select</code>) which works in the same way as regular insert however it uses <code>select</code> instead of <code>values</code></p>
+<p>This adds ALL the rows from the specified columns in the other table to the matching positioned column in the first table (<strong>name matching is irrelevant, it is position/order specific</strong>)</p>
+<p>to copy data from a existing table into a new table use <code>select into</code> command (where, group by, and multiple table joins may all be used, but it will only create one table)</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">INTO</span> new_table </span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="kw">FROM</span> existing_table</span></code></pre></div>
+</div>
+<div id="lesson-16-updatedelete" class="section level3 hasAnchor" number="1.4.16">
+<h3><span class="header-section-number">1.4.16</span> Lesson 16 (<code>UPDATE</code>&amp;<code>DELETE</code>)<a href="#lesson-16-updatedelete" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>UPDATE</code> and <code>DELETE</code> modify the data in a table in one of two ways - either updating specific rows or all</p>
+<p><strong>MUST use <code>WHERE</code> to call the specific row wanted OR it WILL affect all rows</strong></p>
+<p>(<em>there is a possible</em> <code>FROM</code> <em>clause to update from another table, that is DBMS specific.)</em></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="kw">UPDATE</span> table_name</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="kw">SET</span> column2 <span class="op">=</span> <span class="st">&#39;what want to add&#39;</span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="kw">WHERE</span> column1 <span class="op">=</span> identifier;</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a><span class="co">#to update multiple columns</span></span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a><span class="kw">UPDATE</span> table_name</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a><span class="kw">SET</span> column3 <span class="op">=</span> <span class="st">&#39;what want to add&#39;</span>, </span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a>    column2 <span class="op">=</span> <span class="st">&#39;2nd col add info&#39;</span></span>
+<span id="cb24-8"><a href="#cb24-8" tabindex="-1"></a><span class="kw">WHERE</span> column1 <span class="op">=</span> identifier,</span>
+<span id="cb24-9"><a href="#cb24-9" tabindex="-1"></a><span class="co">#to delete column value (sets to NULL)</span></span>
+<span id="cb24-10"><a href="#cb24-10" tabindex="-1"></a><span class="kw">UPDATE</span> table_name</span>
+<span id="cb24-11"><a href="#cb24-11" tabindex="-1"></a><span class="kw">SET</span> column2 <span class="op">=</span> <span class="kw">NULL</span></span>
+<span id="cb24-12"><a href="#cb24-12" tabindex="-1"></a><span class="kw">WHERE</span> column1 <span class="op">=</span> identifier,</span>
+<span id="cb24-13"><a href="#cb24-13" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" tabindex="-1"></a><span class="co">#to delete row (wont work with FK)</span></span>
+<span id="cb24-15"><a href="#cb24-15" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> table_name</span>
+<span id="cb24-16"><a href="#cb24-16" tabindex="-1"></a><span class="kw">WHERE</span> column_name <span class="op">=</span> identifier;</span>
+<span id="cb24-17"><a href="#cb24-17" tabindex="-1"></a><span class="co">/*won&#39;t delete table itself </span></span>
+<span id="cb24-18"><a href="#cb24-18" tabindex="-1"></a><span class="co">(also to delete all rows faster)*/</span></span>
+<span id="cb24-19"><a href="#cb24-19" tabindex="-1"></a><span class="kw">TRUNCATE</span> <span class="kw">TABLE</span> table_name;</span></code></pre></div>
+</div>
+<div id="lesson-17-createalterdrop-table" class="section level3 hasAnchor" number="1.4.17">
+<h3><span class="header-section-number">1.4.17</span> Lesson 17 (<code>CREATE/ALTER/DROP TABLE</code>)<a href="#lesson-17-createalterdrop-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> table_name(</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>    column_1  <span class="dt">date</span>(yyyy<span class="op">-</span>mm<span class="op">-</span>dd)  <span class="kw">NULL</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>    column_2  <span class="fu">char</span>(<span class="st">&quot;size&quot;</span>)  <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>    column_3  <span class="dt">decimal</span>(<span class="st">&quot;# of digits&quot;</span>,<span class="st">&quot;precision&quot;</span>)  <span class="kw">NULL</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>    column_4  <span class="dt">varchar</span>(<span class="st">&quot;max size&quot;</span>)  <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" tabindex="-1"></a>    column_5  <span class="dt">int</span>  <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb25-7"><a href="#cb25-7" tabindex="-1"></a>);</span></code></pre></div>
+<p>If <code>NOT NULL</code>is not specified the default is <code>NULL</code> which allows <code>NULL</code>s</p>
+<p><em>If you need to change a column from <code>NOT NULL</code> to <code>NULL</code></em></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> tablename </span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a>MODIFY columnname columndatatype <span class="kw">NULL</span>;</span></code></pre></div>
+<p>you can specify default values for when no value is entered by putting <code>DEFAULT</code> in the fourth column ex. in MySQL to get the date if date is not specified <code>DEFAULT  CURRENT_DATE</code></p>
+<p>to update table definitions use <code>ALTER TABLE</code> shouldn’t change tables after built though, but can add columns, most places cant remove or change columns, but they can be renamed - the best way to add things is to make a new table and then rename the new table, and rename the old one or remove it</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> table_to_be_edited</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="kw">ADD</span> column_name <span class="fu">CHAR</span> (num);</span></code></pre></div>
+<p>to delete a table there is the <code>DROP TABLE</code> command that has no confirmation or undo</p>
+<p>if the table is a parent table, the child table has to be dropped first</p>
+</div>
+<div id="lesson-18-view" class="section level3 hasAnchor" number="1.4.18">
+<h3><span class="header-section-number">1.4.18</span> Lesson 18 (<code>VIEW</code>)<a href="#lesson-18-view" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>views are most commonly used to hide complex SQL</p>
+<p>you also cannot <code>UPDATE</code> a view you just have to <code>DROP</code> and rebuild it or you can do <code>REPLACE</code>.</p>
+<p>it is generally good practice to not build a view tied to specific data (ex. a customer)</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="co">#to create a view </span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="kw">CREATE</span> VIEW view1 <span class="kw">AS</span></span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="kw">SELECT</span> col1, col2, col3</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="kw">FROM</span> table1, table2, table3</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="kw">WHERE</span> table1<span class="ch">.</span>idcol <span class="op">=</span> table2<span class="ch">.</span>idcol <span class="kw">AND</span> table2<span class="ch">.</span>idcol <span class="op">=</span> table3<span class="ch">.</span>idcol;</span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="co">/*you can then just query the view</span></span>
+<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a><span class="co">as you would any table*/</span></span></code></pre></div>
+</div>
+<div id="lesson-22-keys-and-constraints" class="section level3 tabset hasAnchor" number="1.4.19">
+<h3><span class="header-section-number">1.4.19</span> Lesson 22 keys and constraints<a href="#lesson-22-keys-and-constraints" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="primary-key-setting" class="section level4 hasAnchor" number="1.4.19.1">
+<h4><span class="header-section-number">1.4.19.1</span> Primary Key Setting<a href="#primary-key-setting" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>to set the primary key when initially creating a table you include after your list of columns a <code>primary key</code> constraint, which can be one or multiple columns</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co">#to set the primary key when one column  CREATE TABLE table_name( </span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>col_1 <span class="dt">int</span> <span class="kw">NOT</span> <span class="kw">NULL</span>, </span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>col_2 <span class="dt">int</span>, </span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>col_3 <span class="dt">int</span>, </span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a><span class="kw">PRIMARY</span> <span class="kw">KEY</span> (col1) );</span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a><span class="co">#OR</span></span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> table_name( </span>
+<span id="cb29-8"><a href="#cb29-8" tabindex="-1"></a>col_1 <span class="dt">int</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>, </span>
+<span id="cb29-9"><a href="#cb29-9" tabindex="-1"></a>col_2 <span class="dt">int</span>, </span>
+<span id="cb29-10"><a href="#cb29-10" tabindex="-1"></a>col_3 <span class="dt">int</span>);</span>
+<span id="cb29-11"><a href="#cb29-11" tabindex="-1"></a><span class="co">#to set the primary key when multiple columns </span></span>
+<span id="cb29-12"><a href="#cb29-12" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> table_name( </span>
+<span id="cb29-13"><a href="#cb29-13" tabindex="-1"></a>col_1 <span class="dt">int</span> <span class="kw">NOT</span> <span class="kw">NULL</span>, </span>
+<span id="cb29-14"><a href="#cb29-14" tabindex="-1"></a>col_2 <span class="dt">int</span> <span class="kw">NOT</span> <span class="kw">NULL</span>, </span>
+<span id="cb29-15"><a href="#cb29-15" tabindex="-1"></a>col_3 <span class="dt">int</span>, </span>
+<span id="cb29-16"><a href="#cb29-16" tabindex="-1"></a><span class="kw">CONSTRAINT</span> a_name <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (col_1,col_2) ); </span>
+<span id="cb29-17"><a href="#cb29-17" tabindex="-1"></a><span class="co">/*this sets col_1 &amp; 2 together as the VALUE of the primary key, but under one name*/</span></span></code></pre></div>
+<p>to set the primary key when altering a table, it just runs as a regular <code>alter table</code> command with the synax as above AND the column(s) being set as primary key MUST have been marked <code>NOT NULL</code> during creation ex.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> table_name </span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a><span class="kw">ADD</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (col_name); </span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a><span class="co">#or the multiple column syntax above</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="co">#to drop a primary key constraint </span></span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> table_name </span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>;</span></code></pre></div>
+</div>
+<div id="foreign-key-setting" class="section level4 hasAnchor" number="1.4.19.2">
+<h4><span class="header-section-number">1.4.19.2</span> Foreign Key Setting<a href="#foreign-key-setting" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb32"><pre class="sourceCode sqlmysql"><code class="sourceCode sqlmysql"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="co">/* to set the foreign key on a new table</span></span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="co">if you want the FK to be required set col</span></span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="co">to NOT NULL, else if optional leave nullable */</span></span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> table_name( </span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>col_1 <span class="dt">int</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">PRIMARY</span> <span class="kw">KEY</span>, </span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a>col_2 <span class="dt">int</span> <span class="kw">NOT</span> <span class="kw">NULL</span>, </span>
+<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a>col_id <span class="dt">int</span>,</span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (col_id) <span class="kw">REFERENCES</span> </span>
+<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a>orig_table(col_id) );</span>
+<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a><span class="co"># to add a FK to an existing table</span></span>
+<span id="cb32-12"><a href="#cb32-12" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> table_name</span>
+<span id="cb32-13"><a href="#cb32-13" tabindex="-1"></a><span class="kw">ADD</span> <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (COL_ID) <span class="kw">REFERENCES</span></span>
+<span id="cb32-14"><a href="#cb32-14" tabindex="-1"></a>parent_table(COL_ID);</span>
+<span id="cb32-15"><a href="#cb32-15" tabindex="-1"></a><span class="co">/* this does the same thing as when creating</span></span>
+<span id="cb32-16"><a href="#cb32-16" tabindex="-1"></a><span class="co">but on an existing table */</span></span>
+<span id="cb32-17"><a href="#cb32-17" tabindex="-1"></a></span>
+<span id="cb32-18"><a href="#cb32-18" tabindex="-1"></a><span class="co">/* to effect the foreign key on delete (or</span></span>
+<span id="cb32-19"><a href="#cb32-19" tabindex="-1"></a><span class="co">update) action the default is &quot;RESTRICT&quot; </span></span>
+<span id="cb32-20"><a href="#cb32-20" tabindex="-1"></a><span class="co">for what actions see &#39;CH 10 Deletion Rules&#39; */</span></span>
+<span id="cb32-21"><a href="#cb32-21" tabindex="-1"></a><span class="kw">FOREIGN</span> <span class="kw">KEY</span> (col_id) <span class="kw">REFERENCES</span> </span>
+<span id="cb32-22"><a href="#cb32-22" tabindex="-1"></a>parent_table(col_id) <span class="kw">ON</span> <span class="kw">DELETE</span></span>
+<span id="cb32-23"><a href="#cb32-23" tabindex="-1"></a><span class="kw">RESTRICT</span>|<span class="kw">CASCADE</span>|<span class="kw">SET</span> <span class="kw">NULL</span>|<span class="kw">SET</span> <span class="kw">DEFAULT</span> </span></code></pre></div>
+<p>This also works for foreign keys in recursive relationships</p>
+</div>
+<div id="unique-constraints" class="section level4 hasAnchor" number="1.4.19.3">
+<h4><span class="header-section-number">1.4.19.3</span> Unique Constraints<a href="#unique-constraints" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>unique constraints are used to ensure that all data in column(s) is unique. similar to PK (ex. you would want a unique constraint on a social security number but do not want to use that as the PK)</p>
+<ul>
+<li>A table can contain multiple unique constraints, but only one primary key is allowed per table.</li>
+<li>Unique constraint columns can contain NULL values.</li>
+<li>Unique constraint columns can be modified or updated.</li>
+<li>Unique constraint column values can be reused.</li>
+<li>Unlike primary keys, unique constraints cannot be used to define foreign keys.</li>
+</ul>
+<p>uses either <code>UNIQUE</code> in table definition or a separate <code>CONSTRAINT</code></p>
+</div>
+<div id="check-constraints" class="section level4 hasAnchor" number="1.4.19.4">
+<h4><span class="header-section-number">1.4.19.4</span> Check constraints<a href="#check-constraints" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Check constraints are used to ensure that data in column(s) meets a set of criteria</p>
+<p>common uses</p>
+<ul>
+<li>Checking minimum or maximum values: ex. not allowing a value of 0 even though technically valid number</li>
+<li>Specifying ranges:</li>
+<li>Allowing only specific values:</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": [
+    ["book.pdf", "Download PDF"]
+  ],
+  "search": false,
+  "toc": {
+    "collapse": "section"
+  },
+  "documentclass": "report",
+  "link-citations": true,
+  "toc_depth": 3,
+  "number_section": false,
+  "number_chapter": false,
+  "code_folding": "hide",
+  "toolbar": {
+    "position": "fixed"
+  },
+  "info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

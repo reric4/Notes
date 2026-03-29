@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>R Notes</title>
+  <meta name="description" content="R Notes" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="R Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="R Notes" />
+  
+  
+  
+
+<meta name="author" content="Ray Erickson" />
+
+
+<meta name="date" content="2026-03-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path=""><a href="#r-code"><i class="fa fa-check"></i><b>1</b> <strong><em><code>R</code>-code</em></strong></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#general"><i class="fa fa-check"></i><b>1.1</b> <strong>general</strong></a></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#ggplot"><i class="fa fa-check"></i><b>1.2</b> <strong>ggplot</strong></a></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#df"><i class="fa fa-check"></i><b>1.3</b> <strong>df</strong></a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path=""><a href="#filtering-joins"><i class="fa fa-check"></i><b>1.3.1</b> Filtering Joins</a></li>
+<li class="chapter" data-level="1.3.2" data-path=""><a href="#pivoting"><i class="fa fa-check"></i><b>1.3.2</b> Pivoting</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path=""><a href="#stats"><i class="fa fa-check"></i><b>1.4</b> <strong>stats</strong></a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path=""><a href="#binomial-distributions"><i class="fa fa-check"></i><b>1.4.1</b> Binomial distributions</a></li>
+<li class="chapter" data-level="1.4.2" data-path=""><a href="#normal-distributions"><i class="fa fa-check"></i><b>1.4.2</b> Normal distributions</a></li>
+<li class="chapter" data-level="1.4.3" data-path=""><a href="#statistical-inference"><i class="fa fa-check"></i><b>1.4.3</b> Statistical Inference</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path=""><a href="#r-markdown"><i class="fa fa-check"></i><b>2</b> <strong><em><code>R</code>-Markdown</em></strong></a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">R Notes</h1>
+<p class="author"><em>Ray Erickson</em></p>
+<p class="date"><em>2026-03-29</em></p>
+</div>
+<div id="r-code" class="section level1 tabset hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> <strong><em><code>R</code>-code</em></strong><a href="#r-code" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="general" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> <strong>general</strong><a href="#general" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>seq(from,to,by)</code> &amp; (<code>a:b</code> = <code>seq(a,b,1)</code>)<br />
+<code>tibble</code> stores vectors as columns<br />
+<code>is.na</code>checks if there are any NA values in a string<br />
+<code>tail()</code> &amp; <code>head()</code> give bottom and top <em>n</em> rows of df (n defaults to 6)<br />
+<code>%&gt;%</code> = <code>control+shift+m</code> (<em>takes object on left and passes it into the function on the right as the</em> <strong>first</strong> <em>argument</em>)</p>
+</div>
+<div id="ggplot" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> <strong>ggplot</strong><a href="#ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>geom_smooth()</code> creates smooth line through center of data (<em><code>se=F</code> removes ribbon &amp; <code>method="lm"</code> flatten line</em>)<br />
+<code>alpha</code> controls transparency<br />
+<code>scale_?_?</code> can hold <code>breaks</code>, <code>lables</code> &amp; <code>limits</code><br />
+<code>labs()</code> is plot labels<br />
+<code>facet_wrap</code> seperates plots by whatever <code>facets=vars(?)</code> is set at<br />
+<code>geom_line</code>, `<code>geom_point</code>, <code>geom_boxplot</code>, <code>geom_histogram</code>, <code>geom_density</code>, <code>geom_bar</code>, <code>geom_col</code></p>
+</div>
+<div id="df" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> <strong>df</strong><a href="#df" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>mutate(newcolname=expression)</code> adds new col to df<br />
+<code>select()</code> reduces num of col in df by selecting to keep or remove<br />
+<code>relocate()</code> moves col around in df (<em>generally to immediate left unless specified with <code>.before</code> or <code>.after</code></em>)<br />
+<code>rename(newname=oldname)</code><br />
+<code>arrange()</code>reorders rows bu value of variable smallest to largest unless using <code>desc()</code><br />
+<code>filter()</code> keeps rows that follow logical condition (<strong>must</strong> <em>= T/F</em>)<br />
+<code>drop_na</code> get rid of rows that have NA for any col listed or if none listed at all<br />
+<code>summarize(newconame=expression)</code> computes down to one value<br />
+<code>group_by</code>sets grouping property (<em>sometimes need <code>ungroup()</code></em>)<br />
+- <code>n()</code> uses <code>group_by</code> to return number of rows in group<br />
+<code>slice_min()</code> &amp; <code>slice_max()</code> return specified number of rows by variable<br />
+<code>case_when()</code> creates new vectors based off specific cases in existing vector
+### Mutating Joins</p>
+<p><code>left_join(x,y,by)</code> keeps all rows of x, appends cols of y where possible (<em>make sure to pick a col to join that matches well</em>)</p>
+<p><code>right_join(x,y,by</code> keeps all rows of y appends cols x where possible (<em>if cols not have same name can do<code>colnameinx==colnameiny</code></em>)</p>
+<p><code>inner_join(x,y,by)</code> <strong>only</strong> keeps rows that appear in both</p>
+<p><code>full_join(x,y,by)</code> keeps <strong>any</strong> row which appears in either df by adding them onto the bottom</p>
+<div id="filtering-joins" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Filtering Joins<a href="#filtering-joins" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>semi_join(x,y,by)</code> returns all rows of x that match y via <em>by</em> (<strong>will not add cols</strong>)</p>
+<p><code>anti_join(x,y,by)</code> will return all rows from x that do <strong>not</strong> match y via <em>by</em></p>
+</div>
+<div id="pivoting" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Pivoting<a href="#pivoting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>pivot_longer(df,colnames)</code>will default create two new cols <code>name</code> with the old col names and <code>value</code> with the old col values (<em>can rename using <code>names_to="newname"</code> &amp; <code>values_to="newname"</code></em>)</p>
+<p><code>pivot_wider(df,names_from=col1,values_from=col2)</code></p>
+</div>
+</div>
+<div id="stats" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> <strong>stats</strong><a href="#stats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="binomial-distributions" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Binomial distributions<a href="#binomial-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>dbinom(k,n,p)</code>= <span class="math inline">\(P(Binim(n,p)=k)\)</span> or how likely it is to get <span class="math inline">\(k\)</span> successes from <span class="math inline">\(n\)</span> trials with <span class="math inline">\(p\)</span> probabilty of success</p>
+<p><code>pbinom(q,n,p)</code> returns P(Binom(n,p)≤q) or (<em>the probability <span class="math inline">\(p\)</span> of the random variable being <span class="math inline">\(q\)</span> or less in <span class="math inline">\(n\)</span> number of trials</em>)<br />
+to compute the opposite <code>1-pbinom(q,n,p)</code> or <code>pbinom(q,n,p,lower.tail=F)</code> (<em>this is P(X&gt;q)</em>** not **<em>P(X≥q)</em>)<br />
+<code>qbinom(pr,n,p)</code> tells you how large <span class="math inline">\(q\)</span> needs to be for P(Binom(n,p)≤q) to be at least <span class="math inline">\(pr\)</span>, (<em>it is the inverse of <code>pbinom(q,n,p)</code></em>)</p>
+</div>
+<div id="normal-distributions" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Normal distributions<a href="#normal-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>dnorm(x,mu,sigma)</code>=the height of the density function <span class="math inline">\(N(\mu,\sigma)\)</span> at x<br />
+<code>pnorm(q,mu,sigma)</code> returns P(X≤q) and is the same as P(X&lt;q)
+to compute the opposite <code>1-pnorm(q,mu,sigma)</code> or <code>pnorm(q,mu,sigma,lower.tail=F)</code><br />
+<code>qnorm(pr,mu,sigma)</code> tells you how large <span class="math inline">\(q\)</span> needs to be for P(norm(mu,sigma)≤q) to be at least <span class="math inline">\(pr\)</span>, (<em>it is the inverse of <code>pnorm(q,mu,sigma)</code></em>)</p>
+</div>
+<div id="statistical-inference" class="section level3 hasAnchor" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Statistical Inference<a href="#statistical-inference" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>qnorm(C + (1-C)/2) * SE</code> or another <code>q___</code> function calculates the <strong>margin of error</strong></p>
+<p><code>cor(x,y)</code> or <code>cor(y,x)</code> (<em>they are the same</em>) calculates the <strong>correlation coefficient</strong> <span class="math inline">\(r\)</span> between two <strong>vectors</strong></p>
+<p><code>lm(y~x)</code> where <code>y</code> is the <strong>response variable</strong> and <code>x</code> is the <strong>predictor variable</strong> (<em>MUST be in this order</em>)<br />
+<code>coef(df)</code> can be used to just pull the point estimates for the intercept and slope<br />
+<code>resid(df)</code> can be used to extract the residuals<br />
+<code>predict(lm(y~x), newdata = df(x))</code> can predict the <span class="math inline">\(\hat{Y}\)</span> values optional addition <code>interval = "prediction" or "confidence"</code></p>
+<p><code>t.test(data, conf.level(default .95))</code> takes in <strong>a vector of raw data</strong> and returns a <strong>confidence interval</strong> and output from a <strong>hypothesis test</strong>.</p>
+</div>
+</div>
+</div>
+<div id="r-markdown" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> <strong><em><code>R</code>-Markdown</em></strong><a href="#r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": [
+    ["book.pdf", "Download PDF"]
+  ],
+  "search": false,
+  "toc": {
+    "collapse": "section"
+  },
+  "documentclass": "report",
+  "link-citations": true,
+  "toc_depth": 3,
+  "number_section": false,
+  "number_chapter": false,
+  "code_folding": "hide",
+  "toolbar": {
+    "position": "fixed"
+  },
+  "info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>CS 564 Notes</title>
+  <meta name="description" content="CS 564 Notes" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="CS 564 Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CS 564 Notes" />
+  
+  
+  
+
+<meta name="author" content="Ray Erickson" />
+
+
+<meta name="date" content="2026-03-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path=""><a href="#keywords"><i class="fa fa-check"></i>Keywords</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#terms"><i class="fa fa-check"></i>Terms</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#code"><i class="fa fa-check"></i>Code</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#diagrams"><i class="fa fa-check"></i>Diagrams</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#database-systems-basics"><i class="fa fa-check"></i>Database Systems Basics</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#definitions"><i class="fa fa-check"></i>Definitions</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#data-models-vs-databases"><i class="fa fa-check"></i>data models vs databases</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#entities-and-relationships"><i class="fa fa-check"></i>entities and relationships</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#schema-domains"><i class="fa fa-check"></i>schema, domains</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#relational-model"><i class="fa fa-check"></i>Relational Model</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#relational-databases-from-the-bottom-up"><i class="fa fa-check"></i>relational databases from the bottom up</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#one-step-out"><i class="fa fa-check"></i>one step out</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#constraints"><i class="fa fa-check"></i>constraints</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#translation"><i class="fa fa-check"></i>Model to DB Translations</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#objorient"><i class="fa fa-check"></i>(OO) Object Oriented</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#erstyle"><i class="fa fa-check"></i>E/R Style</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#nulls"><i class="fa fa-check"></i>Using Nulls</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#db-programming"><i class="fa fa-check"></i>DB Programming</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#special-values"><i class="fa fa-check"></i>special values</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#logic"><i class="fa fa-check"></i>logic</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#defining-a-database-schema"><i class="fa fa-check"></i>defining a database schema</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#defining-a-relation"><i class="fa fa-check"></i>defining a relation</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#editing"><i class="fa fa-check"></i>editing</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#constraints-1"><i class="fa fa-check"></i>constraints</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#cs-database-info"><i class="fa fa-check"></i>CS database info</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#definitions-1"><i class="fa fa-check"></i>definitions</a>
+<ul>
+<li class="chapter" data-level="0.0.1" data-path=""><a href="#operations"><i class="fa fa-check"></i><b>0.0.1</b> operations</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#buffer"><i class="fa fa-check"></i>Buffer</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#indexing"><i class="fa fa-check"></i>Indexing</a>
+<ul>
+<li class="chapter" data-level="0.0.2" data-path=""><a href="#hashing"><i class="fa fa-check"></i><b>0.0.2</b> Hashing</a></li>
+<li class="chapter" data-level="0.0.3" data-path=""><a href="#tree--"><i class="fa fa-check"></i><b>0.0.3</b> Tree {-=““}</a></li>
+</ul></li>
+<li class="chapter" data-level="0.1" data-path=""><a href="#memory"><i class="fa fa-check"></i><b>0.1</b> Memory</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#storage"><i class="fa fa-check"></i>Storage</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path=""><a href="#sql"><i class="fa fa-check"></i><code>SQL</code> Notes</a>
+<ul>
+<li class="chapter" data-level="" data-path=""><a href="#infoschema"><i class="fa fa-check"></i><code>INFORMATION_SCHEMA</code></a></li>
+<li class="chapter" data-level="" data-path=""><a href="#sqlnotes"><i class="fa fa-check"></i>General SQL</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#mysql"><i class="fa fa-check"></i>MySQL Specific</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path=""><a href="#c-notes-c-.unnumbered"><i class="fa fa-check"></i><b>1</b> <code>C++</code> Notes {#c++ .unnumbered}</a></li>
+<li class="chapter" data-level="" data-path=""><a href="#database-design-broad-scheme"><i class="fa fa-check"></i>Database design broad scheme</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">CS 564 Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">CS 564 Notes</h1>
+<p class="author"><em>Ray Erickson</em></p>
+<p class="date"><em>2026-03-29</em></p>
+</div>
+<!--![title](pngs/name.png)-->
+<div id="keywords" class="section level1 unnumbered hasAnchor">
+<h1>Keywords<a href="#keywords" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="terms" class="section level2 unnumbered hasAnchor">
+<h2>Terms<a href="#terms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="a" class="section level4 unnumbered hasAnchor">
+<h4><u>A</u><a href="#a" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#aggreg">aggregation</a></li>
+<li><a href="#attribute">attributes</a>
+<ul>
+<li><a href="#atomic">atomic</a></li>
+<li><a href="#descriptive-attributes">descriptive</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="b" class="section level4 unnumbered hasAnchor">
+<h4><u>B</u><a href="#b" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#bufmanage">buffer manager</a></li>
+</ul>
+</div>
+<div id="c" class="section level4 unnumbered hasAnchor">
+<h4><u>C</u><a href="#c" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#row-num">cardinality</a></li>
+<li><a href="#class-hrchy">class hierarchies</a></li>
+<li><a href="#constraint">constraints</a>
+<ul>
+<li><a href="#covering-constraints">covering</a></li>
+<li><a href="#domain-constraint">domain</a></li>
+<li><a href="#integrity-constraints">integrity</a></li>
+<li><a href="#key-constraints">key</a></li>
+<li><a href="#overlap-constraint">overlap</a></li>
+<li><a href="#part_constraints">participation</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="d" class="section level4 unnumbered hasAnchor">
+<h4><u>D</u><a href="#d" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#database">database</a></li>
+<li><a href="#data-model">data model</a></li>
+<li><a href="#col-num">degree/arity</a></li>
+<li><a href="#diagrams">diagrams</a>
+<ul>
+<li><a href="#class-diagram">class</a></li>
+<li><a href="#activity-diagram">activity</a></li>
+<li><a href="#statechart-diagram">statechart</a></li>
+</ul></li>
+<li><a href="#diskmanage">disk manager</a></li>
+<li><a href="#domain">domain</a>
+<ul>
+<li><a href="#atomic">atomic</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="e" class="section level4 unnumbered hasAnchor">
+<h4><u>E</u><a href="#e" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#entity">entities</a>
+<ul>
+<li><a href="#wk-entity">weak entities</a></li>
+</ul></li>
+<li><a href="#erstyle">E/R style translation</a></li>
+</ul>
+</div>
+<div id="f" class="section level4 unnumbered hasAnchor">
+<h4><u>F</u><a href="#f" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#file">file</a>
+<ul>
+<li><a href="#filelayer">file layer</a></li>
+<li><a href="#heapfile">heap file</a></li>
+</ul></li>
+<li><a href="#frame">frame (on a disk)</a></li>
+</ul>
+<!-- #### <u>G</u> {.unnumbered} -->
+<!-- #### <u>H</u> {.unnumbered} -->
+</div>
+<div id="i" class="section level4 unnumbered hasAnchor">
+<h4><u>I</u><a href="#i" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#id-owner">identifying owner</a></li>
+<li><a href="#index">index</a></li>
+<li>instance
+<ul>
+<li><a href="#relational-db-instance">relational database</a></li>
+<li><a href="#relation-instance">relation</a></li>
+</ul></li>
+</ul>
+<!-- #### <u>J</u> {.unnumbered} -->
+</div>
+<div id="k" class="section level4 unnumbered hasAnchor">
+<h4><u>K</u><a href="#k" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#key">keys</a></li>
+</ul>
+<!-- #### <u>L</u> {.unnumbered} -->
+<!-- #### <u>M</u> {.unnumbered} -->
+</div>
+<div id="n" class="section level4 unnumbered hasAnchor">
+<h4><u>N</u><a href="#n" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#null">null values</a></li>
+</ul>
+<!-- #### <u>O</u> {.unnumbered} -->
+</div>
+<div id="p" class="section level4 unnumbered hasAnchor">
+<h4><u>P</u><a href="#p" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#page">pages (on a disk)</a></li>
+</ul>
+</div>
+<div id="q" class="section level4 unnumbered hasAnchor">
+<h4><u>Q</u><a href="#q" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#query">query</a>,</li>
+</ul>
+</div>
+<div id="r" class="section level4 unnumbered hasAnchor">
+<h4><u>R</u><a href="#r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#record">records/tuples</a></li>
+<li><a href="#dataentry">data entry (item)</a></li>
+<li><a href="#rid">record id</a></li>
+<li><a href="#relation">relation</a></li>
+<li><a href="#relational-db">relational databases</a></li>
+<li><a href="#relationships">relationships</a>
+<ul>
+<li><a href="#id-relationship">identifying</a></li>
+<li><a href="#ternary">ternary</a></li>
+</ul></li>
+</ul>
+</div>
+<div id="s" class="section level4 unnumbered hasAnchor">
+<h4><u>S</u><a href="#s" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#schema">schema</a>
+<ul>
+<li><a href="#dbschema"><em>defining a database</em></a></li>
+<li><a href="#relational-db-schema">relational database</a></li>
+</ul></li>
+<li><a href="#sql">SQL notes</a>
+<ul>
+<li><a href="#sqlnotes">general</a></li>
+<li><a href="#mysql">MySQL</a></li>
+</ul></li>
+<li><a href="#subclass">sub-classes</a></li>
+<li><a href="#subq">subqueries</a></li>
+</ul>
+</div>
+<div id="t" class="section level4 unnumbered hasAnchor">
+<h4><u>T</u><a href="#t" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="#table">tables</a></li>
+<li><a href="#translation">translation</a>
+<ul>
+<li><a href="#nulls">null usage</a></li>
+<li><a href="#objorient">object oriented</a></li>
+</ul></li>
+<li><a href="#triggers">triggers</a></li>
+</ul>
+<!-- #### <u>U</u> {.unnumbered} -->
+</div>
+<div id="v" class="section level4 unnumbered hasAnchor">
+<h4><u>V</u><a href="#v" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>value *see <a href="#record">records/tuples</a></li>
+</ul>
+<!-- #### <u>W</u> {.unnumbered} -->
+<!-- #### <u>X</u> {.unnumbered} -->
+<!-- #### <u>Y</u> {.unnumbered} -->
+<!-- #### <u>Z</u> {.unnumbered} -->
+</div>
+</div>
+<div id="code" class="section level2 unnumbered hasAnchor">
+<h2>Code<a href="#code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="#checks">CHECK</a></li>
+<li><a href="#exists">EXISTS</a></li>
+<li><a href="#grpby">GROUP BY</a></li>
+<li><a href="#having">HAVING</a></li>
+<li><a href="#infoschema">INFORMATION_SCHEMA</a></li>
+</ul>
+</div>
+</div>
+<div id="diagrams" class="section level1 unnumbered hasAnchor">
+<h1>Diagrams<a href="#diagrams" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><u><span id="activity-diagram">activity diagrams</span></u> show the flow of actions in a business process while <u><span id="statechart-diagram">statechart diagrams</span></u> describe dynamic interactions between system objects and <u><span id="class-diagram">class diagrams</span></u> are more general ER diagrams to model application entities and their logical relationships in addition to data entities and their relationships</p>
+<p>Keys are to be underlined in an ER diagram.</p>
+<div class="float">
+<img src="images/clipboard-851281759.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-2349434576.png" /><img src="images/clipboard-2296827572.png" /></div>
+</div>
+<div class="float">
+<img src="images/clipboard-2288075861.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-2994873498.png" /></div>
+</div>
+</div>
+<div id="database-systems-basics" class="section level1 unnumbered hasAnchor">
+<h1>Database Systems Basics<a href="#database-systems-basics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="definitions" class="section level2 unnumbered hasAnchor">
+<h2>Definitions<a href="#definitions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-models-vs-databases" class="section level3 unnumbered hasAnchor">
+<h3>data models vs databases<a href="#data-models-vs-databases" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><u><span id="data-model">data models</span></u> model real-world scenarios of interest while <u><span id="database">databases</span></u> are a collection of interrelated data items.</p>
+</div>
+<div id="entities-and-relationships" class="section level3 unnumbered hasAnchor">
+<h3>entities and relationships<a href="#entities-and-relationships" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><u><span id="entity">entities</span></u> are specific individually distinguishable things ex. students, faculty, courses, classrooms, etc… and a collection of entities is an <u>entity set</u>.</p>
+<blockquote>
+<p>An entity set should at least</p>
+<ul>
+<li>be more than the name of something, it needs at least one non-key attribute</li>
+</ul>
+<p>or</p>
+<ul>
+<li>be one of the “many” in a M:N or 1:N relationship</li>
+</ul>
+</blockquote>
+<hr />
+<p><u><span id="relationships">relationships</span></u> are the connections between <a href="#entity">entities</a> and <u>relationship sets</u> are collections of relationships.</p>
+</div>
+<div id="schema-domains" class="section level3 unnumbered hasAnchor">
+<h3>schema, domains<a href="#schema-domains" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><u><span id="schema">schemas</span></u> are descriptions of data in terms of the <a href="#data-model">data model</a></p>
+<hr />
+<p><u><span id="domain">domains</span></u> are the allowable values for each <a href="#attribute">attribute</a> essentially what type of field (<code>int</code>,<code>string</code>, etc…) each value can be. They must be <a href="#atomic">atomic</a></p>
+</div>
+</div>
+</div>
+<div id="relational-model" class="section level1 unnumbered hasAnchor">
+<h1>Relational Model<a href="#relational-model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="relational-databases-from-the-bottom-up" class="section level3 unnumbered hasAnchor">
+<h3>relational databases from the bottom up<a href="#relational-databases-from-the-bottom-up" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><u><span id="record">tuples/records</span></u> fill the rows of a <u><span id="relation">relation</span></u> which is essentially a table. Technically the <span id="table">table</span> is only specific <u><span id="relation-instance">instance</span></u> of the <a href="#relation">relation</a>, but that is generally an arbitrary distinction</p>
+<hr />
+<p>the columns of the <a href="#relation">relation</a> are <u><span id="attribute">attributes</span></u> which are <a href="#entity">entity</a> descriptions.</p>
+<ul>
+each attribute has an <u><span id="atomic">atomic domain</span></u> (a string, an integer, …) something that is a single non-breakable value, such as a persons ssn which cannot be broken up into smaller chunks of data
+</ul>
+<p><u>atomic attributes</u> are attributes only made up of one atomic domain.</p>
+<hr />
+<p>the <u><span id="col-num">degree/arity</span></u> is the number of <a href="#attribute">attributes</a> or columns in the <a href="#relation">relation</a> and the <u><span id="row-num">cardinality</span></u> is the number of <a href="#record">tuples/records</a> or rows in it</p>
+<hr />
+<p><u><span id="relational-db">relational databases</span></u> are specifically a collection of <a href="#relation">relations</a> with distinct names</p>
+<hr />
+<p><u><span id="relational-db-schema">relational database schema</span></u> are a collection of <a href="#schema">schemas</a> for the <a href="#relation">relations</a> in the <a href="#database">database</a></p>
+<hr />
+<p>an <u><span id="relational-db-instance">instance</span></u> of a <a href="#relational-db">relational databases</a> is a collection of <a href="#relation-instance">relation instances</a>, one per <a href="#relation">relation</a> <a href="#schema">schema</a> in the general <a href="#database">database</a> <a href="#schema">schema</a></p>
+</div>
+<div id="one-step-out" class="section level3 unnumbered hasAnchor">
+<h3>one step out<a href="#one-step-out" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><u><span id="key">keys</span></u> are an <a href="#attribute">attribute</a> that can uniquely identify an object in the set - one of which will get designated as the <u>primary key</u> the identifying data point for that <a href="#record">record</a>, the others are <u>candidate keys</u> they could be primary keys but they aren’t</p>
+<hr />
+<p>A <a href="#relationship">relationship</a> can also have <u><span id="descriptive-attributes">descriptive attributes</span></u> which describe the <a href="#relationship">relationship</a> not the <a href="#entity">entity</a>.</p>
+<p><u><span id="ternary">ternary relationships</span></u> are specifically when more than two <a href="#entity">entities</a> are involved in a <a href="#relationship">relationship</a>.</p>
+<hr />
+<p><u><span id="wk-entity">weak entities</span></u> can only be identified uniquely by considering some of its <a href="#attribute">attributes</a> in conjunction with the <u><a href="#key">primary key</a></u> of another <a href="#entity">entity</a>.</p>
+<p><a href="#wk-entity">weak entities</a> must have an <u><span id="id-owner">identifying owner</span></u> whose <u><a href="#key">primary key</a></u> connects the two.</p>
+<p>This 1:N <a href="#relationship">relationship</a> is the <u><span id="id-relationship">identifying relationship</span></u></p>
+<hr />
+<p><u><span id="class-hrchy">class hierarchies</span></u> are sometimes needed where <u><span id="subclass">sub-classes</span></u> which are typically <u><span id="isa">IS-A</span></u> <a href="#relationship">relationships</a> have individual <a href="#attribute">attributes</a> but also all of the superclass <a href="#attribute">attributes</a></p>
+<ul>
+such as some students are undergrad and others are graduate, they are both students, but they each have separate <a href="#attributes">attributes</a> that allow for distinctions
+</ul>
+<hr />
+<p><u><span id="aggreg">aggregation</span></u> is some form of combining data typically using <u>aggregate functions</u> <em><code>sum</code>,<code>avg</code>,<code>count</code>, etc…</em></p>
+</div>
+<div id="constraints" class="section level3 unnumbered hasAnchor">
+<h3>constraints<a href="#constraints" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><u><span id="key-constraints">key constraints</span></u> are restrictions on how <a href="#relationship">relationships</a> can occur, ex. <em>each department can only have one manager</em></p>
+<p>these are also called <u>single value constraints</u> and are when an <a href="#attribute">attribute</a></p>
+<hr />
+<p><u><span id="part_constraints">participation_constraints</span></u> note the required participation level of an <a href="#entity">entity</a>, ex. <em>every department must have a manager, but every manager does not need to supervise an employee</em></p>
+<hr />
+<p><u><span id="integrity-constraints">integrity constraints</span></u> are conditions providing specifying conditions that must be satisfied by the data</p>
+<ul>
+One type is <u>referential integrity constraints</u> ex. if you work for a company it has to exist in the database.
+</ul>
+<hr />
+<p><u><span id="domain-constraint">domain constraints</span></u> specify what the <a href="#domain">domains</a> are allowed to be for each <a href="#attribute">attributes</a></p>
+<ul>
+ex. people’s ages have to be between 0 and 115
+</ul>
+<hr />
+<p><u><span id="overlap-constraint">overlap constraints</span></u> determine if the subclass is allowed to contain the same <a href="#entity">entity</a>, ex. can one person be both a student and a teacher, if it is not specified no overlap is assumed.</p>
+<hr />
+<p><u><span id="covering-constraints">covering constraints</span></u> determine whether the <a href="#entity">entities</a> in the subclass include ALL of the entities in the superclass, ex. must every employee either be hourly or contract, if not specified it is assumed that non subclass <a href="#entity">entities</a> are allowed</p>
+<hr />
+</div>
+</div>
+<div id="translation" class="section level1 unnumbered hasAnchor">
+<h1>Model to DB Translations<a href="#translation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>3 styles</p>
+<div class="float">
+<img src="images/clipboard-1901644240.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-446088812.png" /></div>
+</div>
+<div id="objorient" class="section level2 unnumbered hasAnchor">
+<h2>(OO) Object Oriented<a href="#objorient" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="float">
+<img src="images/clipboard-1498651903.png" width="265" alt="" />
+<div class="figcaption"><img src="images/clipboard-461547069.png" /></div>
+</div>
+</div>
+<div id="erstyle" class="section level2 unnumbered hasAnchor">
+<h2>E/R Style<a href="#erstyle" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="float">
+<img src="images/clipboard-3761296401.png" width="175" alt="" />
+<div class="figcaption"><img src="images/clipboard-1839105995.png" /></div>
+</div>
+</div>
+<div id="nulls" class="section level2 unnumbered hasAnchor">
+<h2>Using Nulls<a href="#nulls" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="float">
+<img src="images/clipboard-4060100682.png" width="294" alt="" />
+<div class="figcaption"><img src="images/clipboard-543163598.png" /></div>
+</div>
+</div>
+</div>
+<div id="db-programming" class="section level1 unnumbered hasAnchor">
+<h1>DB Programming<a href="#db-programming" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="special-values" class="section level3 unnumbered hasAnchor">
+<h3>special values<a href="#special-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>the SQL logic is more accurately depicted as 3-part, <code>true</code>,<code>false</code>, and<code>unknown</code> since when any <a href="#record">value</a> is compared to <span id="null">NULL</span> the <a href="#record">value</a> is unknown ala schrodingers cat. therefore accounting for nulls requires the usage of the null-specific terms</p>
+<pre><code>IS null
+IS NOT null
+#etc...</code></pre>
+<hr />
+<p><span id="exists">EXISTS(<code>query</code>)</span> is true if and <strong>only</strong> if there is a valid <a href="#query">query</a> within.</p>
+</div>
+<div id="logic" class="section level3 unnumbered hasAnchor">
+<h3>logic<a href="#logic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><u>[queries]{{#query}</u> are essentially questions posed to the database that pull information out of the different tables</p>
+<p><u><span id="subq">subqueries</span></u> or 2nd level <code>select... from... where...</code> statements can be used in place of <a href="#record">values</a> including in <code>from</code> and <code>where</code> statements but they must be guaranteed to ONLY produce one <a href="#record">value</a></p>
+<hr />
+<p>[GROUP BY]{grpby} and <span id="having">HAVING</span> are often used together to <a href="#aggreg">aggregate</a> within <a href="#query">queries</a> where <code>having</code> works pretty much like <code>is</code></p>
+</div>
+<div id="defining-a-database-schema" class="section level2 unnumbered hasAnchor">
+<h2>defining a database schema<a href="#defining-a-database-schema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A <u><span id="dbschema">database schema</span></u> contains the definitions for the <a href="#relation">tables</a> of that database</p>
+<ul>
+other elements can also be in the database schema including <a href="#views">views</a>, <a href="#index">indexes</a>, and <a href="#triggers">triggers</a>
+</ul>
+</div>
+<div id="defining-a-relation" class="section level2 unnumbered hasAnchor">
+<h2>defining a relation<a href="#defining-a-relation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>…</p>
+<p>you can define the <code>default</code> values by adding <code>default 'value',</code> onto the line, this can be done when adding to a <a href="#relation">table</a> as well</p>
+</div>
+<div id="editing" class="section level2 unnumbered hasAnchor">
+<h2>editing<a href="#editing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>you can insert <a href="#record">values</a> into <a href="#relation">tables</a> via <a href="#subq">subqueries</a></p>
+<p><code>INSERT INTO ...      (SELECT...      FROM...      WHERE...) );</code></p>
+<hr />
+<p>when deleting be wary around using <code>and</code> because it is a staged process and will not work properly</p>
+</div>
+<div id="constraints-1" class="section level2 unnumbered hasAnchor">
+<h2>constraints<a href="#constraints-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><u><span id="constraint">constraints</span></u> are relationships among data elements the the DMBS is required to enforce of which there are a few different kinds</p>
+<ul>
+<a href="#covering-constraints">covering constraints</a>, <a href="#domain-constraint">domain constraints</a>, <a href="#integrity-constraints">integrity constraints</a>, <a href="#key-constraints">key constraints</a>, <a href="#overlap-constraint">overlap constraints</a>, <a href="#part_constraints">participation constraints</a>
+</ul>
+<p><u><span id="triggers">triggers</span></u> are executed only when a specific condition occurs.</p>
+<p><u><span id="checks">checks</span></u> put constraints on the value of particular attributes but only checks when the value is inserted or updated</p>
+<div class="float">
+<img src="images/clipboard-1504354693.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-2548794991.png" /></div>
+</div>
+<p><u><span id="assertions">assertions</span></u> should be checked after every modification to any relation of the DB</p>
+<div class="float">
+<img src="images/clipboard-2975703507.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-2198124259.png" /></div>
+</div>
+<div id="foreign-key-constraint-problems" class="section level5 unnumbered hasAnchor">
+<h5>foreign key constraint problems<a href="#foreign-key-constraint-problems" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>with foreign keys care must be taken so that the insertion of a record into one table does not call for a non-existent record in the linked table and that in the reverse the deletion of a record from one table would not cause a broken link</p>
+</div>
+</div>
+</div>
+<div id="cs-database-info" class="section level1 unnumbered hasAnchor">
+<h1>CS database info<a href="#cs-database-info" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="definitions-1" class="section level2 unnumbered hasAnchor">
+<h2>definitions<a href="#definitions-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="images/clipboard-565512367.png" /></p>
+<p>each <a href="#record">record</a> in a file has a unique identifier called the <u><span id="rid">record id</span></u> which is used to identify the disk address</p>
+<p>data is read into memory for processing and written into storage by the <u><span id="bufmanage">buffer manager</span></u> while the space on the disk is handled by the <u><span id="diskmanage">disk space manager</span></u></p>
+<p>the <u><span id="filelayer">file layer</span></u> stores the <a href="#records">records</a> in a file of records <u><span id="file">(file)</span></u> (which is essentially a <a href="#relation">table</a>) in a collection of disk pages <u><span id="page">(pages)</span></u> (essentially just data chunks). Also tracking pages alloted to files, and the space within.</p>
+<p>a <u><span id="heapfile">heap file</span></u> is unordered,</p>
+<div id="operations" class="section level3 hasAnchor" number="0.0.1">
+<h3><span class="header-section-number">0.0.1</span> operations<a href="#operations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="images/clipboard-149967585.png" /></p>
+<div id="unsorted" class="section level4 hasAnchor" number="0.0.1.1">
+<h4><span class="header-section-number">0.0.1.1</span> unsorted<a href="#unsorted" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="float">
+<img src="images/clipboard-429328729.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-1379508040.png" /></div>
+</div>
+</div>
+<div id="sorted" class="section level4 hasAnchor" number="0.0.1.2">
+<h4><span class="header-section-number">0.0.1.2</span> sorted<a href="#sorted" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="float">
+<img src="images/clipboard-4123099914.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-895464204.png" /></div>
+</div>
+<p><img src="images/clipboard-4084040676.png" /></p>
+</div>
+<div id="clustered" class="section level4 hasAnchor" number="0.0.1.3">
+<h4><span class="header-section-number">0.0.1.3</span> clustered<a href="#clustered" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="float">
+<img src="images/clipboard-732581811.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-414347508.png" /></div>
+</div>
+<p><img src="images/clipboard-2625925830.png" /></p>
+</div>
+<div id="heap-unclustered-tree" class="section level4 hasAnchor" number="0.0.1.4">
+<h4><span class="header-section-number">0.0.1.4</span> heap unclustered tree<a href="#heap-unclustered-tree" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="float">
+<img src="images/clipboard-96040907.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-1222240653.png" /></div>
+</div>
+</div>
+<div id="unclustered-hash" class="section level4 hasAnchor" number="0.0.1.5">
+<h4><span class="header-section-number">0.0.1.5</span> unclustered hash<a href="#unclustered-hash" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="float">
+<img src="images/clipboard-1384868226.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-179608908.png" /></div>
+</div>
+</div>
+</div>
+</div>
+<div id="buffer" class="section level2 unnumbered hasAnchor">
+<h2>Buffer<a href="#buffer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="indexing" class="section level2 unnumbered hasAnchor">
+<h2>Indexing<a href="#indexing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>an <u><span id="index">index</span></u> organizes data records (or <span id="dataentry">data entries</span> which can contain one or more records with that same search value) on disk</p>
+<p>there are three main ways to index stored data entry</p>
+<div class="float">
+<img src="images/clipboard-3733344097.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-4019190506.png" /></div>
+</div>
+<div id="hashing" class="section level3 hasAnchor" number="0.0.2">
+<h3><span class="header-section-number">0.0.2</span> Hashing<a href="#hashing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="images/clipboard-3513056024.png" /></p>
+</div>
+<div id="tree--" class="section level3 hasAnchor" number="0.0.3">
+<h3><span class="header-section-number">0.0.3</span> Tree {-=““}<a href="#tree--" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="images/clipboard-2476574392.png" /></p>
+</div>
+</div>
+<div id="memory" class="section level2 hasAnchor" number="0.1">
+<h2><span class="header-section-number">0.1</span> Memory<a href="#memory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="images/clipboard-3857499539.png" /></p>
+</div>
+<div id="storage" class="section level2 unnumbered hasAnchor">
+<h2>Storage<a href="#storage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="images/clipboard-1621701456.png" /><img src="images/clipboard-3723611101.png" /><img src="images/clipboard-3928152052.png" /><img src="images/clipboard-3903922343.png" /></p>
+</div>
+</div>
+<div id="sql" class="section level1 unnumbered hasAnchor">
+<h1><code>SQL</code> Notes<a href="#sql" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="infoschema" class="section level2 unnumbered hasAnchor">
+<h2><code>INFORMATION_SCHEMA</code><a href="#infoschema" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>selected tables out of the information schema db find all at</p>
+<p><a href="https://dev.mysql.com/doc/mysql-infoschema-excerpt/5.7/en/information-schema-general-table-reference.html">MYSQL INFORMATION SCHEMA LINK</a></p>
+<p><img src="images/clipboard-1222250964.png" /></p>
+<p><span class="math display">\[COLUMNS\]</span></p>
+<ul>
+<li><code>TABLE_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the table containing the column belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the table containing the column belongs.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table containing the column.</li>
+</ul></li>
+<li><code>COLUMN_NAME</code>
+<ul>
+<li>The name of the column.</li>
+</ul></li>
+<li><code>ORDINAL_POSITION</code>
+<ul>
+<li>The position of the column within the table. <code>ORDINAL_POSITION</code> is necessary because you might want to say <code>ORDER</code> BY <code>ORDINAL_POSITION.</code> Unlike <code>SHOW COLUMNS</code>, <code>SELECT</code> from the <code>COLUMNS</code> table does not have automatic ordering.</li>
+</ul></li>
+<li><code>COLUMN_DEFAULT</code>
+<ul>
+<li>The default value for the column. This is <code>NULL</code> if the column has an explicit default of <code>NULL</code>, or if the column definition includes no <code>DEFAULT</code> clause.</li>
+</ul></li>
+<li><code>IS_NULLABLE</code>
+<ul>
+<li>The column nullability. The value is <code>YES</code> if <code>NULL</code> values can be stored in the column, <code>NO</code> if not.</li>
+</ul></li>
+<li><code>DATA_TYPE</code>
+<ul>
+<li>The column data type.</li>
+<li>The <code>DATA_TYPE</code> value is the type name only with no other information. The <code>COLUMN_TYPE</code> value contains the type name and possibly other information such as the precision or length.</li>
+</ul></li>
+<li><code>CHARACTER_MAXIMUM_LENGTH</code>
+<ul>
+<li>For string columns, the maximum length in characters.</li>
+</ul></li>
+<li><code>CHARACTER_OCTET_LENGTH</code>
+<ul>
+<li>For string columns, the maximum length in bytes.</li>
+</ul></li>
+<li><code>NUMERIC_PRECISION</code>
+<ul>
+<li>For numeric columns, the numeric precision.</li>
+</ul></li>
+<li><code>NUMERIC_SCALE</code>
+<ul>
+<li>For numeric columns, the numeric scale.</li>
+</ul></li>
+<li><code>DATETIME_PRECISION</code>
+<ul>
+<li>For temporal columns, the fractional seconds precision.</li>
+</ul></li>
+<li><code>CHARACTER_SET_NAME</code>
+<ul>
+<li>For character string columns, the character set name.</li>
+</ul></li>
+<li><code>COLLATION_NAME</code>
+<ul>
+<li>For character string columns, the collation name.</li>
+</ul></li>
+<li><code>COLUMN_TYPE</code>
+<ul>
+<li>The column data type.</li>
+<li>The <code>DATA_TYPE</code> value is the type name only with no other information. The <code>COLUMN_TYPE</code> value contains the type name and possibly other information such as the precision or length.</li>
+</ul></li>
+<li><code>COLUMN_KEY</code>
+<ul>
+<li>Whether the column is indexed:
+<ul>
+<li>If <code>COLUMN_KEY</code> is empty, the column either is not indexed or is indexed only as a secondary column in a multiple-column, nonunique index.</li>
+<li>If <code>COLUMN_KEY</code> is <code>PRI</code>, the column is a <code>PRIMARY KEY</code> or is one of the columns in a multiple-column <code>PRIMARY KEY</code>.</li>
+<li>If <code>COLUMN_KEY</code> is <code>UNI</code>, the column is the first column of a <code>UNIQUE</code> index. (A <code>UNIQUE</code> index permits multiple <code>NULL</code> values, but you can tell whether the column permits <code>NULL</code> by checking the <code>Null</code> column.)</li>
+<li>If <code>COLUMN_KEY</code> is <code>MUL</code>, the column is the first column of a nonunique index in which multiple occurrences of a given value are permitted within the column.</li>
+<li>If more than one of the <code>COLUMN_KEY</code> values applies to a given column of a table, <code>COLUMN_KEY</code> displays the one with the highest priority, in the order <code>PRI</code>, <code>UNI</code>, <code>MUL.</code></li>
+<li>A <code>UNIQUE</code> index may be displayed as <code>PRI</code> if it cannot contain <code>NULL</code> values and there is no <code>PRIMARY KEY</code> in the table. A <code>UNIQUE</code> index may display as <code>MUL</code> if several columns form a composite <code>UNIQUE</code> index; although the combination of the columns is unique, each column can still hold multiple occurrences of a given value.</li>
+</ul></li>
+</ul></li>
+<li><code>EXTRA</code>
+<ul>
+<li>Any additional information that is available about a given column. The value is nonempty in these cases:</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[KEY_-COLUMN_-USAGE\]</span></p>
+<p>The <code>KEY_COLUMN_USAGE</code> table describes which key columns have constraints.</p>
+<ul>
+<li><code>CONSTRAINT_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the constraint belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>CONSTRAINT_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the constraint belongs.</li>
+</ul></li>
+<li><code>CONSTRAINT_NAME</code>
+<ul>
+<li>The name of the constraint.</li>
+</ul></li>
+<li><code>TABLE_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the table containing the column belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the table containing the column belongs.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table containing the column.</li>
+</ul></li>
+<li><code>COLUMN_NAME</code>
+<ul>
+<li>The name of the column that has the constraint.</li>
+<li>If the constraint is a foreign key, then this is the column of the foreign key, not the column that the foreign key references.</li>
+</ul></li>
+<li><code>ORDINAL_POSITION</code>
+<ul>
+<li>The column’s position within the constraint, not the column’s position within the table. Column positions are numbered beginning with 1.</li>
+</ul></li>
+<li><code>POSITION_IN_UNIQUE_CONSTRAINT</code>
+<ul>
+<li>NULL for unique and primary-key constraints. For foreign-key constraints, this column is the ordinal position in key of the table that is being referenced.</li>
+</ul></li>
+<li><code>REFERENCED_TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) referenced by the constraint.</li>
+</ul></li>
+<li><code>REFERENCED_TABLE_NAME</code>
+<ul>
+<li>The name of the table referenced by the constraint.</li>
+</ul></li>
+<li><code>REFERENCED_COLUMN_NAME</code>
+<ul>
+<li>The name of the column referenced by the constraint.</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[REFERENTIAL_-INFORMATION\]</span></p>
+<p>The <code>REFERENTIAL_CONSTRAINTS</code> table provides information about foreign keys.</p>
+<ul>
+<li><code>CONSTRAINT_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the constraint belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>CONSTRAINT_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the constraint belongs.</li>
+</ul></li>
+<li><code>CONSTRAINT_NAME</code>
+<ul>
+<li>The name of the constraint.</li>
+</ul></li>
+<li><code>UNIQUE_CONSTRAINT_CATALOG</code>
+<ul>
+<li>The name of the catalog containing the unique constraint that the constraint references. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>UNIQUE_CONSTRAINT_SCHEMA</code>
+<ul>
+<li>The name of the unique constraint that the constraint references.</li>
+</ul></li>
+<li><code>UNIQUE_CONSTRAINT_NAME</code>
+<ul>
+<li>The name of the column that has the constraint.</li>
+</ul></li>
+<li><code>MATCH_OPTION</code>
+<ul>
+<li>The value of the constraint <code>MATCH</code> attribute. The only valid value at this time is <code>NONE.</code><br />
+</li>
+</ul></li>
+<li><code>UPDATE_RULE</code>
+<ul>
+<li>The value of the constraint <code>ON UPDATE</code> attribute. The possible values are <code>CASCADE</code>, <code>SET NULL</code>, <code>SET DEFAULT</code>, <code>RESTRICT</code>, <code>NO ACTION</code>.</li>
+</ul></li>
+<li><code>DELETE_RULE</code>
+<ul>
+<li>The value of the constraint <code>ON DELETE</code> attribute. The possible values are <code>CASCADE</code>, <code>SET NULL</code>, <code>SET DEFAULT</code>, <code>RESTRICT</code>, <code>NO ACTION</code>.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table containing the column.</li>
+</ul></li>
+<li><code>REFERENCED_TABLE_NAME</code>
+<ul>
+<li>The name of the table referenced by the constraint.</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[TABLES\]</span></p>
+<ul>
+<li><code>TABLE_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the table containing the column belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the table belongs.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table.</li>
+</ul></li>
+<li><code>TABLE_TYPE</code>
+<ul>
+<li><code>BASE TABLE</code> for a table, <code>VIEW</code> for a view, or <code>SYSTEM VIEW</code> for an <code>INFORMATION_SCHEMA</code> table.</li>
+<li>The <code>TABLES</code> table does not list <code>TEMPORARY</code> tables.</li>
+</ul></li>
+<li><code>ENGINE</code>
+<ul>
+<li>The storage engine for the table.</li>
+<li>For partitioned tables, <code>ENGINE</code> shows the name of the storage engine used by all partitions.</li>
+</ul></li>
+<li><code>VERSION</code>
+<ul>
+<li>The version number of the table’s <em>.frm</em> file.</li>
+</ul></li>
+<li><code>ROW_FORMAT</code>
+<ul>
+<li>The row-storage format (<code>Fixed</code>, <code>Dynamic</code>, <code>Compressed</code>, <code>Redundant</code>, <code>Compact</code>).</li>
+</ul></li>
+<li><code>TABLE_ROWS</code>
+<ul>
+<li>The number of rows.</li>
+<li><code>TABLE_ROWS</code> is <code>NULL</code> for <code>INFORMATION_SCHEMA</code> tables.</li>
+</ul></li>
+<li><code>AVG_ROW_LENGTH</code>
+<ul>
+<li>The average row length.</li>
+</ul></li>
+<li><code>DATA_LENGTHH</code>
+<ul>
+<li>?</li>
+</ul></li>
+<li><code>MAX_DATA_LENGTH</code>
+<ul>
+<li>?</li>
+</ul></li>
+<li><code>INDEX_LENGTH</code>
+<ul>
+<li>?</li>
+</ul></li>
+<li><code>DATA_FREE</code>
+<ul>
+<li>The number of allocated but unused bytes.</li>
+</ul></li>
+<li><code>AUTO_INCREMENT</code>
+<ul>
+<li>The next <code>AUTO_INCREMENT</code> value.</li>
+</ul></li>
+<li><code>CREATE_TIME</code>
+<ul>
+<li>when the table was created.</li>
+</ul></li>
+<li><code>UPDATE_TIME</code>
+<ul>
+<li>When the data file was last updated.</li>
+</ul></li>
+<li><code>CHECK_TIME</code>
+<ul>
+<li>When the table was last checked.</li>
+</ul></li>
+<li><code>TABLE_COLLATION</code>
+<ul>
+<li>The table default collation. The output does not explicitly list the table default character set, but the collation name begins with the character set name.</li>
+</ul></li>
+<li><code>CHECKSUM</code>
+<ul>
+<li>The live <code>checksum</code> value, if any.<br />
+</li>
+</ul></li>
+<li><code>CREATE_OPTIONS</code>
+<ul>
+<li>Extra options used with CREATE TABLE</li>
+</ul></li>
+<li><code>TABLE_COMMENT</code>
+<ul>
+<li>The comment used when creating the table (or information as to why MySQL could not access the table information).</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[TABLES_-CONSTRAINTS\]</span></p>
+<p>The <code>TABLE_CONSTRAINTS</code> table describes which tables have constraints.</p>
+<ul>
+<li><code>CONSTRAINT_CATALOG</code>
+<ul>
+<li>The name of the catalog to which the constraint belongs. This value is always <code>def</code>.</li>
+</ul></li>
+<li><code>CONSTRAINT_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the constraint belongs.</li>
+</ul></li>
+<li><code>CONSTRAINT_NAME</code>
+<ul>
+<li>The name of the constraint.</li>
+</ul></li>
+<li><code>MATCH_OPTION</code>
+<ul>
+<li>The value of the constraint <code>MATCH</code> attribute. The only valid value at this time is <code>NONE.</code><br />
+</li>
+</ul></li>
+<li><code>TABLE_SCHEMA</code>
+<ul>
+<li>The name of the schema (database) to which the table belongs.</li>
+</ul></li>
+<li><code>TABLE_NAME</code>
+<ul>
+<li>The name of the table.</li>
+</ul></li>
+<li><code>CONSTRAINT_TYPE</code>
+<ul>
+<li>The type of constraint. The value can be <code>UNIQUE</code>, <code>PRIMARY KEY</code>, <code>FOREIGN KEY</code>, or <code>CHECK.</code> This is a <code>CHAR</code> (not <code>ENUM</code>) column. The <code>CHECK</code> value is not available until MySQL supports <code>CHECK.</code></li>
+<li>The <code>UNIQUE</code> and <code>PRIMARY KEY</code> information is about the same as what you get from the <code>Key_name</code> column in the output from <code>SHOW INDEX</code> when the <code>Non_unique</code> column is 0.</li>
+</ul></li>
+</ul>
+</div>
+<div id="sqlnotes" class="section level2 unnumbered hasAnchor">
+<h2>General SQL<a href="#sqlnotes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>(pronounced sequel), (ANSI/ISO language)</p>
+<p>Composed of descriptive words, and non procedural (you describe what you want done, not how</p>
+<p>Categories of statements</p>
+<p><img src="images/clipboard-2293752079.png" width="281" /></p>
+<p>There is both ANSI SQL which is the standard and DMBS Specific ‘dialects’</p>
+<div class="float">
+<img src="images/clipboard-1961114955.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-2650416445.png" width="238" /></div>
+</div>
+<p>constraints are optional and [] are not actually used</p>
+<p><img src="images/clipboard-2888031156.png" /> <img src="images/clipboard-3281324140.png" /> <img src="images/clipboard-3157193248.png" /> <img src="images/clipboard-3831871835.png" /> <img src="images/clipboard-2696889302.png" /></p>
+</div>
+<div id="mysql" class="section level2 unnumbered hasAnchor">
+<h2>MySQL Specific<a href="#mysql" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="images/clipboard-1647928688.png" /><img src="images/clipboard-1593053714.png" /><img src="images/clipboard-2407362657.png" /><img src="images/clipboard-2069308249.png" /><img src="images/clipboard-1980209212.png" /><img src="images/clipboard-1308006299.png" /><img src="images/clipboard-2394000718.png" /><img src="images/clipboard-2653933734.png" /><img src="images/clipboard-103468022.png" /><img src="images/clipboard-1086370828.png" /><img src="images/clipboard-2288004060.png" /><img src="images/clipboard-4245148916.png" /><img src="images/clipboard-1736486351.png" /></p>
+</div>
+</div>
+<div id="c-notes-c-.unnumbered" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> <code>C++</code> Notes {#c++ .unnumbered}<a href="#c-notes-c-.unnumbered" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+</div>
+<div id="database-design-broad-scheme" class="section level1 unnumbered hasAnchor">
+<h1>Database design broad scheme<a href="#database-design-broad-scheme" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="float">
+<img src="images/clipboard-3107985707.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-2600053242.png" /></div>
+</div>
+<div class="float">
+<img src="images/clipboard-2600053242.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-2467413802.png" /></div>
+</div>
+<div class="float">
+<img src="images/clipboard-3003974467.png" alt="" />
+<div class="figcaption"><img src="images/clipboard-2258941791.png" /></div>
+</div>
+<p><img src="images/clipboard-159243816.png" /><img src="images/clipboard-1052079479.png" /></p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": [
+    ["book.pdf", "Download PDF"]
+  ],
+  "search": false,
+  "toc": {
+    "collapse": "section"
+  },
+  "documentclass": "report",
+  "link-citations": true,
+  "toc_depth": 3,
+  "number_section": false,
+  "number_chapter": false,
+  "code_folding": "hide",
+  "toolbar": {
+    "position": "fixed"
+  },
+  "info": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

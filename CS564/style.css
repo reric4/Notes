@@ -1,0 +1,52 @@
+.book.font-family-1 {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+.book.color-theme-2 .book-summary ul.summary li.active > a, .book.color-theme-2 .book-summary ul.summary li a:hover {
+    color: #D3C6B6;
+    background: #24291D;
+    font-weight: 600;
+}
+.fa {
+	color: #CEC9BA;
+}
+.book .book-body .page-wrapper .page-inner section.normal em {
+	color: #907A41;
+}
+.book.color-theme-2 .book-summary ul.summary li a, .book.color-theme-2 .book-summary ul.summary li span {
+	color: #9F8360;
+}
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal a {
+	color: #9F8360;
+}
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal {
+    color: #BFB39C;
+}
+.book.color-theme-2 .book-summary {
+    background: linear-gradient(0deg, black, transparent);
+}
+div.book.color-theme-2 {
+    background: #212622;
+}
+.book.color-theme-2 .book-body {
+  background-color: #212622;
+} 
+.book.color-theme-2 .book-header .btn {
+    color: #CEC9BA;
+}
+.book.color-theme-2 .book-body .page-wrapper .page-inner section {
+    background: #212622;
+} 
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal hr {
+	background: #443603;
+}
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal h1, .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal h2, .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal h3, .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal h4, .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal h5, .book.color-theme-2 .book-body .page-wrapper .page-inner section.normal h6 {
+    color: #CEC9BA;
+}
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal blockquote {
+    border-color: #93773E;
+}
+.book.color-theme-2 .book-body .page-wrapper .page-inner section.normal code {
+    color: #CDC9BC;
+    background: #3B3C39;
+    border-color: #3B3C39;
+}

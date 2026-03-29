@@ -1,0 +1,122 @@
+---
+title: "R Notes"
+author: "Ray Erickson"
+date: "`r Sys.Date()`"
+output:
+  bookdown::gitbook:
+    css: style.css
+    split_by: none
+    split_bib: false
+    config:
+      documentclass: report
+      link-citations: yes
+      toc_depth: 3
+      number_section: false
+      number_chapter: false
+      toc:
+        collapse: section
+      code_folding: hide # have check and see if get anoyed when noting code chunks
+      toolbar:
+        position: fixed
+      info: false
+      sharing: null
+      download: [["book.pdf", "Download PDF"]]
+editor_options: 
+  markdown: 
+    wrap: none
+
+---
+
+# ***`R`-code***{.tabset}
+
+## **general**
+
+`seq(from,to,by)` & (`a:b` = `seq(a,b,1)`)  
+`tibble` stores vectors as columns  
+`is.na`checks if there are any NA values in a string  
+`tail()` & `head()` give bottom and top *n* rows of df (n defaults to 6)   
+`%>%` = `control+shift+m` (*takes object on left and passes it into the function on the right as the* **first** *argument*) 
+
+## **ggplot**
+
+`geom_smooth()` creates smooth line through center of data (*`se=F` removes ribbon & `method="lm"` flatten line*)   
+`alpha` controls transparency  
+`scale_?_?` can hold `breaks`, `lables` & `limits`  
+`labs()` is plot labels  
+`facet_wrap` seperates plots by   whatever `facets=vars(?)` is set at  
+`geom_line`, ``geom_point`, `geom_boxplot`, `geom_histogram`, `geom_density`, `geom_bar`, `geom_col`
+
+## **df**
+
+`mutate(newcolname=expression)` adds new col to df  
+`select()` reduces num of col in df by selecting to keep or remove  
+`relocate()` moves col around in df (*generally to immediate left unless specified with `.before` or `.after`*)  
+`rename(newname=oldname)`  
+`arrange()`reorders rows bu value of variable smallest to largest unless using `desc()`  
+`filter()` keeps rows that follow logical condition (**must** *= T/F*)  
+`drop_na` get rid of rows that have NA for any col listed or if none listed at all  
+`summarize(newconame=expression)` computes down to one value  
+`group_by`sets grouping property (*sometimes need `ungroup()`*)  
+  - `n()` uses `group_by` to return number of rows in group  
+`slice_min()` & `slice_max()` return specified number of rows by variable  
+`case_when()` creates new vectors based off specific cases in existing vector
+### Mutating Joins
+
+`left_join(x,y,by)` keeps all rows of x, appends cols of y where possible (*make sure to pick a col to join that matches well*)
+
+`right_join(x,y,by` keeps all rows of y appends cols x where possible (*if cols not have same name can do`colnameinx==colnameiny`*)
+
+`inner_join(x,y,by)` **only** keeps rows that appear in both
+
+`full_join(x,y,by)` keeps **any** row which appears in either df by adding them onto the bottom
+
+### Filtering Joins
+
+`semi_join(x,y,by)` returns all rows of x that match y via *by* (**will not add cols**)
+
+`anti_join(x,y,by)` will return all rows from x that do **not** match y via *by*
+
+### Pivoting
+
+`pivot_longer(df,colnames)`will default create two new cols `name` with the old col names and `value` with the old col values (*can rename using `names_to="newname"` & `values_to="newname"`*)
+
+`pivot_wider(df,names_from=col1,values_from=col2)` 
+
+
+
+## **stats**
+
+
+### Binomial distributions
+
+`dbinom(k,n,p)`= $P(Binim(n,p)=k)$ or how likely it is to get $k$ successes from $n$ trials with $p$ probabilty of success
+
+`pbinom(q,n,p)` returns P(Binom(n,p)≤q) or (*the probability $p$ of the random variable being $q$ or less in $n$ number of trials*)  
+to compute the opposite `1-pbinom(q,n,p)` or `pbinom(q,n,p,lower.tail=F)` (*this is P(X>q)*** not ***P(X≥q)*)  
+`qbinom(pr,n,p)` tells you how large $q$ needs to be for P(Binom(n,p)≤q) to be at least $pr$, (*it is the inverse of `pbinom(q,n,p)`*) 
+
+
+### Normal distributions
+
+`dnorm(x,mu,sigma)`=the height of the density function $N(\mu,\sigma)$ at x  
+`pnorm(q,mu,sigma)` returns P(X≤q) and is the same as P(X<q) 
+to compute the opposite `1-pnorm(q,mu,sigma)` or `pnorm(q,mu,sigma,lower.tail=F)`    
+`qnorm(pr,mu,sigma)` tells you how large $q$ needs to be for P(norm(mu,sigma)≤q) to be at least $pr$, (*it is the inverse of `pnorm(q,mu,sigma)`*) 
+
+### Statistical Inference
+
+`qnorm(C + (1-C)/2) * SE` or another `q___` function calculates the **margin of error** 
+
+`cor(x,y)` or `cor(y,x)` (*they are the same*) calculates the **correlation coefficient** $r$ between two **vectors**
+
+`lm(y~x)` where `y` is the **response variable** and `x` is the **predictor variable** (*MUST be in this order*)  
+`coef(df)` can be used to just pull the point estimates for the intercept and slope  
+`resid(df)` can be used to extract the residuals  
+`predict(lm(y~x), newdata = df(x))` can predict the $\hat{Y}$ values optional addition `interval = "prediction" or "confidence"`
+
+`t.test(data, conf.level(default .95))` takes in **a vector of raw data** and returns a **confidence interval** and output from a **hypothesis test**.
+
+
+
+
+# ***`R`-Markdown***

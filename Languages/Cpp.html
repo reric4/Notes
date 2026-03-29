@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>C++ Notes</title>
+  <meta name="description" content="C++ Notes" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="C++ Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="C++ Notes" />
+  
+  
+  
+
+<meta name="author" content="Ray Erickson" />
+
+
+<meta name="date" content="2026-03-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path=""><a href="#c-notes"><i class="fa fa-check"></i><b>1</b> C++ Notes</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#terms"><i class="fa fa-check"></i><b>1.1</b> Terms</a></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#key-list"><i class="fa fa-check"></i><b>1.2</b> Key List</a></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#functions"><i class="fa fa-check"></i><b>1.3</b> Functions</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path=""><a href="#initialization"><i class="fa fa-check"></i><b>1.3.1</b> Initialization</a></li>
+<li class="chapter" data-level="1.3.2" data-path=""><a href="#statements"><i class="fa fa-check"></i><b>1.3.2</b> Statements</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">C++ Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">C++ Notes</h1>
+<p class="author"><em>Ray Erickson</em></p>
+<p class="date"><em>2026-03-29</em></p>
+</div>
+<!--![title](pngs/name.png)-->
+<div id="c-notes" class="section level1 tabset hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> C++ Notes<a href="#c-notes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>start programs with <code>#include &lt;library&gt;</code> to add libraries to call functions from</p>
+<div id="terms" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Terms<a href="#terms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>most statements require <strong><code>;</code></strong> after function</li>
+<li><strong><code>//</code></strong> single line comment</li>
+<li><strong><code>/* ...*/</code></strong> multiline comment</li>
+<li>a <em>value</em> is a single piece of data</li>
+<li>an <em>object</em> is a stored value</li>
+<li>a <em>variable</em> is a named object</li>
+</ul>
+</div>
+<div id="key-list" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Key List<a href="#key-list" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><code>#include</code> is a preprocessor directive typically used to call a library</li>
+<li><code>iostream</code> — part of c++ library that allows to read/write text from console</li>
+<li><code>=</code> is assignment operator</li>
+<li><code>==</code> is equals</li>
+<li><code>std::cout</code> <em>“character output”</em> print data on output device</li>
+<li><code>std::cin</code> read input from keyboard - is buffered</li>
+<li><code>&lt;&lt;</code> insertion operator, can be repeated to link multiple outputs ex. text and a function</li>
+<li><code>&gt;&gt;</code> extraction operator</li>
+<li><code>std::endl</code> ends line, operates as a return, else outputs are on the same line - useful to denote end of thought not just to break up lines. - flushes the buffer so can be quite slow.</li>
+<li><code>\n</code> newline character, must be put in either single quotes or double quotes, useful for putting in existing quoted text</li>
+<li><code>[[maybe_unused]]</code> attribute allows to tell compiler is fine variable not in use so not throw error</li>
+</ul>
+</div>
+<div id="functions" class="section level2 tabset hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Functions<a href="#functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A function is a collection of statements that get executed sequentially (in order, from top to bottom).</p>
+<blockquote>
+<p>Every c++ program must have a special function named <code>main</code> (all lower case letters).</p>
+</blockquote>
+<p>When the program is run, the statements inside of <code>main</code> are executed in sequential order.</p>
+<p><em>Programs typically terminate after the last statement inside function main has been executed (though programs may abort early in some circumstances, or do some cleanup afterwards).</em></p>
+<p>you can put multiple inputs on the same line, but they need to be separated by some white space <em>(space, tab, enter)</em>, space or tab preferable</p>
+<div id="initialization" class="section level3 tabset hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Initialization<a href="#initialization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="definition" class="section level4 hasAnchor" number="1.3.1.1">
+<h4><span class="header-section-number">1.3.1.1</span> Definition<a href="#definition" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>After a variable has been defined, you can give it a value (in a separate statement) using the <code>=</code> operator. This process is called assignment, and the <code>=</code> operator is called the assignment operator.</p>
+<pre><code>#include &lt;iostream&gt;
+
+int main()
+{
+    int width; // define a variable named width
+    width = 5; // copy assignment of value 5 into variable width
+
+    std::cout &lt;&lt; width; // prints 5
+
+    width = 7; // change value stored in variable width to 7
+
+    std::cout &lt;&lt; width; // prints 7
+
+    return 0;
+}</code></pre>
+<p>Initialization combines these two into one. When an object is defined, you can optionally provide an initial value for the object. The process of specifying an initial value for an object is called initialization, and the syntax used to initialize an object is called an initializer. Informally, the initial value is often called an “initializer” as well.</p>
+<pre><code>#include &lt;iostream&gt;
+
+int main()
+{
+    int width { 5 };    // define variable width and initialize with initial value 5
+    std::cout &lt;&lt; width; // prints 5
+
+    return 0;
+}</code></pre>
+<pre><code>int a;         // default-initialization (no initializer)
+
+// Traditional initialization forms:
+int b = 5;     // copy-initialization (initial value after equals sign)
+int c ( 6 );   // direct-initialization (initial value in parenthesis)
+
+// Modern initialization forms (preferred):
+int d { 7 };   /* direct-list-initialization
+ (initial value in braces) prefered*/
+
+int e {};      // value-initialization (empty braces)
+
+int a = 5, b = 6;          // copy-initialization
+int c ( 7 ), d ( 8 );      // direct-initialization
+int e { 9 }, f { 10 };     // direct-list-initialization
+int i {}, j {};            // value-initialization
+
+/* must have some initializer for both, 
+cannot initialize both with one number*/</code></pre>
+</div>
+<div id="types" class="section level4 hasAnchor" number="1.3.1.2">
+<h4><span class="header-section-number">1.3.1.2</span> Types<a href="#types" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="list-initialization-preferred" class="section level5 hasAnchor" number="1.3.1.2.1">
+<h5><span class="header-section-number">1.3.1.2.1</span> List-initialization (preferred)<a href="#list-initialization-preferred" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>The modern way to initialize objects in C++ is to use a form of initialization that makes use of curly braces. This is called list-initialization (or uniform initialization or brace initialization).</p>
+<p>List-initialization comes in two forms: direct-list, and copy-list</p>
+<p>includes “narrowing conversions” that make an error message when trying to list initialize a value that the variable cannot hold.</p>
+</div>
+<div id="default-initialization" class="section level5 hasAnchor" number="1.3.1.2.2">
+<h5><span class="header-section-number">1.3.1.2.2</span> Default-initialization<a href="#default-initialization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>When no initializer is provided, this is called default-initialization. In many cases, default-initialization performs no initialization, and leaves the variable with an indeterminate value (a value that is not predictable, sometimes called a “garbage value”)</p>
+</div>
+<div id="copy-initialization" class="section level5 hasAnchor" number="1.3.1.2.3">
+<h5><span class="header-section-number">1.3.1.2.3</span> Copy-initialization<a href="#copy-initialization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>When an initial value is provided after an equals sign, this is called copy-initialization. This form of initialization was inherited from the C language.</p>
+</div>
+<div id="direct-initialization" class="section level5 hasAnchor" number="1.3.1.2.4">
+<h5><span class="header-section-number">1.3.1.2.4</span> Direct-initialization<a href="#direct-initialization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>When an initial value is provided inside parenthesis, this is called direct-initialization.</p>
+</div>
+<div id="value-initialization-zero-initialization" class="section level5 hasAnchor" number="1.3.1.2.5">
+<h5><span class="header-section-number">1.3.1.2.5</span> Value-initialization (Zero-initialization)<a href="#value-initialization-zero-initialization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>When a variable is initialized using an empty set of braces, a special form of list-initialization called value-initialization takes place. In most cases, value-initialization will implicitly initialize the variable to zero (or whatever value is closest to zero for a given type). In cases where zeroing occurs, this is called zero-initialization.</p>
+</div>
+<div id="aggregate-initialization" class="section level5 hasAnchor" number="1.3.1.2.6">
+<h5><span class="header-section-number">1.3.1.2.6</span> Aggregate-initialization<a href="#aggregate-initialization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="reference-initialization" class="section level5 hasAnchor" number="1.3.1.2.7">
+<h5><span class="header-section-number">1.3.1.2.7</span> Reference initialization<a href="#reference-initialization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="static-initialization" class="section level5 hasAnchor" number="1.3.1.2.8">
+<h5><span class="header-section-number">1.3.1.2.8</span> Static-initialization<a href="#static-initialization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="constant-initialization" class="section level5 hasAnchor" number="1.3.1.2.9">
+<h5><span class="header-section-number">1.3.1.2.9</span> Constant-initialization<a href="#constant-initialization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="dynamic-initialization" class="section level5 hasAnchor" number="1.3.1.2.10">
+<h5><span class="header-section-number">1.3.1.2.10</span> Dynamic-initialization<a href="#dynamic-initialization" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+</div>
+</div>
+<div id="statements" class="section level3 tabset hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Statements<a href="#statements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="declaration-statements" class="section level5 hasAnchor" number="1.3.2.0.1">
+<h5><span class="header-section-number">1.3.2.0.1</span> Declaration statements<a href="#declaration-statements" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="jump-statements" class="section level5 hasAnchor" number="1.3.2.0.2">
+<h5><span class="header-section-number">1.3.2.0.2</span> Jump statements<a href="#jump-statements" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="expression-statements" class="section level5 hasAnchor" number="1.3.2.0.3">
+<h5><span class="header-section-number">1.3.2.0.3</span> Expression statements<a href="#expression-statements" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="compound-statements" class="section level5 hasAnchor" number="1.3.2.0.4">
+<h5><span class="header-section-number">1.3.2.0.4</span> Compound statements<a href="#compound-statements" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="selection-statements-conditionals" class="section level5 hasAnchor" number="1.3.2.0.5">
+<h5><span class="header-section-number">1.3.2.0.5</span> Selection statements (conditionals)<a href="#selection-statements-conditionals" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="iteration-statements-loops" class="section level5 hasAnchor" number="1.3.2.0.6">
+<h5><span class="header-section-number">1.3.2.0.6</span> Iteration statements (loops)<a href="#iteration-statements-loops" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+<div id="try-blocks" class="section level5 hasAnchor" number="1.3.2.0.7">
+<h5><span class="header-section-number">1.3.2.0.7</span> Try blocks<a href="#try-blocks" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": null,
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": null,
+    "text": null
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": [
+    ["book.pdf", "Download PDF"]
+  ],
+  "search": false,
+  "toc": {
+    "collapse": "section"
+  },
+  "documentclass": "report",
+  "link-citations": true,
+  "toc_depth": 3,
+  "number_section": false,
+  "number_chapter": false,
+  "code_folding": "hide",
+  "toolbar": {
+    "position": "fixed"
+  },
+  "info": false
+});
+});
+</script>
+
+</body>
+
+</html>

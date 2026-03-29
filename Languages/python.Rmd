@@ -1,0 +1,34 @@
+---
+title: "Python Notes"
+author: "Ray Erickson"
+date: "`r Sys.Date()`"
+output:
+  bookdown::gitbook:
+    css: style.css
+    split_by: none
+    split_bib: false
+    config:
+      documentclass: report
+      link-citations: yes
+      toc_depth: 3
+      number_section: false
+      number_chapter: false
+      toc:
+        collapse: section
+      code_folding: hide # have check and see if get anoyed when noting code chunks
+      toolbar:
+        position: fixed
+      info: false
+      sharing: null
+      download: [["book.pdf", "Download PDF"]]
+editor_options: 
+  markdown: 
+    wrap: none
+
+---
+
+<!--![title](pngs/name.png)-->
+
+# *Python Notes* {.tabset}
+
+## ***General Notes*** {.tabset}
